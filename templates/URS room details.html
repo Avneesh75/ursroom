@@ -1,0 +1,231 @@
+{% extends "base.html" %}{% block body %}{% include "header.html" with post_property="false" %}
+<section class="room_details" id="detail_room_frm">
+  <div class="container">
+    <form method="post" class="roomDetails">
+      {% csrf_token %}
+      <h1 class="heading">room details</h1>
+      <p class="sub-head">select the type of rooms in your pg</p>
+      <div class="row">
+        <div class="row g-3">
+          <div class="col-md">
+            <img src="/static/images/Rectangle 48.png" alt="" class="img-fliud" />
+            <input type="checkbox"
+              class="form-check {% if not prop.single_room %}collapsed{% endif %}" {% if prop.single_room %}checked{% endif %} name="single_room" data-bs-toggle="collapse" data-bs-target="#box_one"
+              aria-expanded="{% if prop.single_room %}true{% else %}false{% endif %}" />
+            <p class="subheadP">single room</p>
+            <div class="collapse first_room_info {% if prop.single_room %}show{% endif %}" id="box_one">
+              <div class="form-group">
+                <label class="form-label">expected rent</label>
+                <input type="number" value="{{ prop.single_room_expected_rent }}" name="single_room_expected_rent"
+                  class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">deposit rent</label>
+                <input type="number" value="{{ prop.single_room_deposit_rent }}" name="single_room_deposit_rent"
+                  class="form-control" />
+              </div>
+              <div class="chekbox-group mt-3 g-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Cupboard" in prop.single_room_extra_features %}checked{% endif %} name="single_room_cupboard">
+                  <span>
+                    <img src="/static/images/Cupboard1.png" alt="" />
+                    Cupboard</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "TV" in prop.single_room_extra_features %}checked{% endif %} name="single_room_tv">
+                  <span> <img src="/static/images/tv.png" alt="" /> TV</span>
+                </div>
+              </div>
+              <div class="chekbox-group mt-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "AC" in prop.single_room_extra_features %}checked{% endif %} name="single_room_ac">
+                  <span> <img src="/static/images/ac.png" alt="" /> AC</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Geyser" in prop.single_room_extra_features %}checked{% endif %} name="single_room_geyser">
+                  <span>
+                    <img src="/static/images/geyser.png" alt="" /> Geyser</span>
+                </div>
+              </div>
+              <div class="chekbox-group mt-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Bedding" in prop.single_room_extra_features %}checked{% endif %} name="single_room_bedding">
+                  <span>
+                    <img src="/static/images/beding.png" alt="" /> Bedding</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Attached Bathroom" in prop.single_room_extra_features %}checked{% endif %} name="single_room_attached_bathroom">
+                  <span><img src="/static/images/bathtub.png" alt="" /> Attached Bathroom</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <img src="/static/images/dubble_room.png" alt="" class="img-fliud" />
+            <input type="checkbox" name="double_room" {% if prop.double_room %}checked{% endif %} class="form-check {% if not prop.double_room %}collapsed{% endif %}" data-bs-toggle="collapse"
+              data-bs-target="#box_tow" aria-expanded="{% if prop.double_room %}true{% else %}false{% endif %}" />
+            <p class="subheadP">dubble room</p>
+            <div class="collapse first_room_info {% if prop.double_room %}show{% endif %}" id="box_tow">
+              <div class="form-group">
+                <label class="form-label">expected rent</label>
+                <input type="number" value="{{ prop.double_room_expected_rent }}" name="double_room_expected_rent"
+                  class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">deposit rent</label>
+                <input type="number" value="{{ prop.double_room_deposit_rent }}" name="double_room_deposit_rent"
+                  class="form-control" />
+              </div>
+              <div class="chekbox-group mt-3 g-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Cupboard" in prop.double_room_extra_features %}checked{% endif %} name="double_room_cupboard">
+                  <span>
+                    <img src="/static/images/Cupboard1.png" alt="" />
+                    Cupboard</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "TV" in prop.double_room_extra_features %}checked{% endif %} name="double_room_tv">
+                  <span> <img src="/static/images/tv.png" alt="" /> TV</span>
+                </div>
+              </div>
+              <div class="chekbox-group mt-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "AC" in prop.double_room_extra_features %}checked{% endif %} name="double_room_ac">
+                  <span> <img src="/static/images/ac.png" alt="" /> AC</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Geyser" in prop.double_room_extra_features %}checked{% endif %} name="double_room_geyser">
+                  <span>
+                    <img src="/static/images/geyser.png" alt="" /> Geyser</span>
+                </div>
+              </div>
+              <div class="chekbox-group mt-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Bedding" in prop.double_room_extra_features %}checked{% endif %} name="double_room_bedding">
+                  <span>
+                    <img src="/static/images/beding.png" alt="" /> Bedding</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Attached Bathroom" in prop.double_room_extra_features %}checked{% endif %} name="double_room_attached_bathroom">
+                  <span><img src="/static/images/bathtub.png" alt="" /> Attached
+                    Bathroom</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <img src="/static/images/triple_sharing.png" alt="" class="img-fliud" />
+            <input type="checkbox" name="triple_room" {% if prop.triple_room %}checked{% endif %} class="form-check {% if not prop.triple_room %}collapsed{% endif %}" data-bs-toggle="collapse"
+              data-bs-target="#box_triple_room"
+              aria-expanded="{% if prop.triple_room %}true{% else %}false{% endif %}" />
+            <p class="subheadP">triple sharing room</p>
+            <div class="collapse first_room_info {% if prop.triple_room %}show{% endif %}" id="box_triple_room">
+              <div class="form-group">
+                <label class="form-label">expected rent</label>
+                <input type="number" value="{{ prop.triple_room_expected_rent }}" name="triple_room_expected_rent"
+                  class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">deposit rent</label>
+                <input type="number" value="{{ prop.triple_room_deposit_rent }}" name="triple_room_deposit_rent"
+                  class="form-control" />
+              </div>
+              <div class="chekbox-group mt-3 g-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Cupboard" in prop.triple_room_extra_features %}checked{% endif %} name="triple_room_cupboard">
+                  <span>
+                    <img src="/static/images/Cupboard1.png" alt="" />
+                    Cupboard</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "TV" in prop.triple_room_extra_features %}checked{% endif %} name="triple_room_tv">
+                  <span> <img src="/static/images/tv.png" alt="" /> TV</span>
+                </div>
+              </div>
+              <div class="chekbox-group mt-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "AC" in prop.triple_room_extra_features %}checked{% endif %} name="triple_room_ac">
+                  <span> <img src="/static/images/ac.png" alt="" /> AC</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Geyser" in prop.triple_room_extra_features %}checked{% endif %} name="triple_room_geyser">
+                  <span>
+                    <img src="/static/images/geyser.png" alt="" /> Geyser</span>
+                </div>
+              </div>
+              <div class="chekbox-group mt-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Bedding" in prop.triple_room_extra_features %}checked{% endif %} name="triple_room_bedding">
+                  <span>
+                    <img src="/static/images/beding.png" alt="" /> Bedding</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Attached Bathroom" in prop.triple_room_extra_features %}checked{% endif %} name="triple_room_attached_bathroom">
+                  <span><img src="/static/images/bathtub.png" alt="" /> Attached
+                    Bathroom</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <img src="/static/images/four_sharing.png" alt="" class="img-fliud" />
+            <input type="checkbox" class="form-check {% if not prop.four_room %}collapsed{% endif %}" {% if prop.four_room %}checked{% endif %} name="four_room" data-bs-toggle="collapse" data-bs-target="#box_four_sharing"
+              aria-expanded="{% if prop.four_room %}true{% else %}false{% endif %}" />
+            <p class="subheadP">four sharing room</p>
+            <div class="collapse first_room_info {% if prop.four_room %}show{% endif %}" id="box_four_sharing">
+              <div class="form-group">
+                <label class="form-label">expected rent</label>
+                <input type="number" value="{{ prop.four_room_expected_rent }}" name="four_room_expected_rent"
+                  class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">deposit rent</label>
+                <input type="number" value="{{ prop.four_room_deposit_rent }}" name="four_room_deposit_rent"
+                  class="form-control" />
+              </div>
+              <div class="chekbox-group mt-3 g-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Cupboard" in prop.four_room_extra_features %}checked{% endif %} name="four_room_cupboard">
+                  <span>
+                    <img src="/static/images/Cupboard1.png" alt="" />
+                    Cupboard</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "TV" in prop.four_room_extra_features %}checked{% endif %} name="four_room_tv">
+                  <span> <img src="/static/images/tv.png" alt="" /> TV</span>
+                </div>
+              </div>
+              <div class="chekbox-group mt-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "AC" in prop.four_room_extra_features %}checked{% endif %} name="four_room_ac">
+                  <span> <img src="/static/images/ac.png" alt="" /> AC</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Geyser" in prop.four_room_extra_features %}checked{% endif %} name="four_room_geyser">
+                  <span>
+                    <img src="/static/images/geyser.png" alt="" /> Geyser</span>
+                </div>
+              </div>
+              <div class="chekbox-group mt-3 d-flex">
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Bedding" in prop.four_room_extra_features %}checked{% endif %} name="four_room_bedding">
+                  <span>
+                    <img src="/static/images/beding.png" alt="" /> Bedding</span>
+                </div>
+                <div class="col-6 border">
+                  <input type="checkbox" {% if "Attached Bathroom" in prop.four_room_extra_features %}checked{% endif %} name="four_room_attached_bathroom">
+                  <span><img src="/static/images/bathtub.png" alt="" /> Attached
+                    Bathroom</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-danger">
+        start post your property
+      </button>
+    </form>
+  </div>
+</section>
+{% endblock body %}

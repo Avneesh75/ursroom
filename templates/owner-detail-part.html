@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% include "header.html" with post_property="false" %}
+  <section class="pr_details" id="detail_frm">
+    <div class="container">
+      <form class="presonal" method="post"> {% csrf_token %}
+        <h1 class="text-center text-capitalize">presonal details</h1>
+        <div class="row">
+          <div class="row g-3">
+            <div class="col-md">
+              <div class="d-flex flex-column justify-content-start align-items-start">
+                <label class="form-label" for="yourName">Your Name</label>
+                <input type="text" class="form-control" id="yourName" name="name" placeholder="Your Name" required>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="d-flex flex-column justify-content-start align-items-start">
+                <label class="form-label" for="yourEmail">Your Email</label>
+                <input type="email" class="form-control" name="email" id="yourEmail" placeholder="Your Email" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row g-3">
+            <div class="col-md">
+              <div class="d-flex flex-column justify-content-start align-items-start">
+                <label class="form-label" for="yourPhone">Your Phone</label>
+                <input type="text" maxlength="10" minlength="10" class="form-control" id="yourPhone" name="phone" placeholder="Your Phone" required>
+              </div>
+            </div>
+            <div class="col-md d-flex flex-column justify-content-end align-items-start">
+              <div class="">
+                <!-- <div class="btn btn-danger">Verify OTP</div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-grup">
+          <h1 class="mb-2">select propery ad type</h1>
+          <!-- <input type="radio" class="btn-check" name="property_type" value="rent" id="option1" autocomplete="off" checked>
+          <label class="btn btn-primary  " for="option1">rent</label> -->
+          <input type="radio" class="btn-check" name="property_type" value="pg/hostel" id="option2" autocomplete="off" checked>
+          <label class="btn btn-primary mx-3" for="option2">pg/hostels</label>
+          <input type="radio" class="btn-check" name="property_type" value="flatmates" id="option3" autocomplete="off">
+          <label class="btn btn-primary " for="option3">flatmates</label>
+        </div>
+        <button type="submit" class="btn btn-danger"> start post your property</button>
+      </form>
+    </div>
+  </section>
+{% endblock body %}

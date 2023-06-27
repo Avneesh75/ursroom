@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% include "header.html" with post_property="false" %}
+<section class="location_details" id="detail_room_frm">
+    <div class="container">
+        <form method="post" class="roomDetails" enctype="multipart/form-data"> {% csrf_token %}
+            <h1 class="heading">Amenities & services details</h1>
+            <div class="row d-flex justify-centent-center aliign-items-center flex-wrap">
+                <div class="col-lg-4 col-sm-12 shadow">
+                    <div class="">
+                        <h3>PG services</h3>
+                        <div class="mb-2">
+                            <h4>Laundry</h4>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" {% if prop.laundry == True %}checked{% endif %}
+                                    type="radio" name="laundry" id="laundryY">
+                                <label class="form-check-label" for="inlineRadio1">yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" {% if prop.laundry == False %}checked{% endif %}
+                                    type="radio" name="laundry" id="laundryN">
+                                <label class="form-check-label" for="inlineRadio2">no</label>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <h4>Worden</h4>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" {% if prop.worden == True %}checked{% endif %}
+                                    type="radio" name="worden" id="wordenY">
+                                <label class="form-check-label" for="inlineRadio1">yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" {% if prop.worden == False %}checked{% endif %}
+                                    type="radio" name="worden" id="wordenN">
+                                <label class="form-check-label" for="inlineRadio2">no</label>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <h4>Room Cleaning</h4>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" {% if prop.room_cleaning == True %}checked{% endif %}
+                                    type="radio" name="room_cleaning" id="roomCleaningY">
+                                <label class="form-check-label" for="inlineRadio1">yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" {% if prop.room_cleaning == False %}checked{% endif %}
+                                    type="radio" name="room_cleaning" id="roomCleaningN">
+                                <label class="form-check-label" for="inlineRadio2">no</label>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="" class="form-label">Car Parking</label>
+                            <select class="form-select" name="parking">
+                                <option value="" selected disabled> select car parking type</option>
+                                <option {% if prop.parking == "Bike" %}selected{% endif %} value="Bike">Bike</option>
+                                <option {% if prop.parking == "Four Wheeler" %}selected{% endif %} value="Four Wheeler">
+                                    Four wheeler</option>
+                                <option {% if prop.parking == "Bike/Four Wheeler" %}selected{% endif %}
+                                    value="Bike/Four Wheeler">Bike/Four wheeler</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-4 col-sm-12 shadow ">
+                    <h3>PG Amenities</h3>
+                    <div class="col-12">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" {% if "wifi" in prop.pg_amenities %}checked{% endif %}
+                                type="checkbox" name="wifi" id="inlineCheckbox1">
+                            <label class="form-check-label" for="inlineCheckbox1">wi-fi</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" {% if "common tv" in prop.pg_amenities %}checked{% endif %}
+                                type="checkbox" name="common_tv" id="inlineCheckbox2">
+                            <label class="form-check-label" for="inlineCheckbox2">common tV</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" {% if "lift" in prop.pg_amenities %}checked{% endif %}
+                                type="checkbox" name="lift" id="inlineCheckbox3">
+                            <label class="form-check-label" for="inlineCheckbox3">lift</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                {% if "power backup" in prop.pg_amenities %}checked{% endif %} type="checkbox"
+                                name="power_backup" id="noSmoking">
+                            <label class="form-check-label" for="noSmoking">power backup</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" {% if "mess" in prop.pg_amenities %}checked{% endif %}
+                                type="checkbox" name="mess" id="guardian">
+                            <label class="form-check-label" for="guardian">mess</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                {% if "refrigerator" in prop.pg_amenities %}checked{% endif %} type="checkbox"
+                                name="refrigerator" id="no-drinking">
+                            <label class="form-check-label" for="no-drinking">refrigerator</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                {% if "No girls Entry" in prop.pg_amenities %}checked{% endif %} type="checkbox"
+                                name="no_girls_entry" id="noGirlsEntry">
+                            <label class="form-check-label" for="noGirlsEntry">no girls entry</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                {% if "No boys Entry" in prop.pg_amenities %}checked{% endif %} type="checkbox"
+                                name="no_boys_entry" id="noBoysEntry">
+                            <label class="form-check-label" for="noBoysEntry">no boys entry</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" {% if "No non-veg" in prop.pg_amenities %}checked{% endif %}
+                                type="checkbox" name="no_non_veg" id="nononVeg">
+                            <label class="form-check-label" for="nononVeg">no non veg</label>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-4 col-sm-12 shadow ">
+                    <div class="mb-3 mx-3">
+                        <label for="massage" class="form-label">property decription</label>
+                        <textarea class="form-control" rows="8" name="property_description"
+                            placeholder="Enter Property Description">{% if prop.property_description %}{{ prop.property_description }}{% endif %}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Pg Images</label>
+                        <input class="form-control" type="file" name="property_images" id="formFileMultiple" multiple accept="image/png, image/jpeg, image/jpg, image/webp">
+                    </div>
+                </div>
+            </div>
+            <div id="image-gallery" class="row {% if images|length > 0 %}d-flex{% else %}d-none{% endif %} flex-wrap align-items-center my-3 rounded shadow">
+                {% if images|length > 0 %}
+                    {% for image in images %}
+                        <img src="{{ image.url }}" alt="" class="col-2 img-fluid rounded m-1">
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="pg_button text-center">
+                <button type="submit" class="btn btn-danger">post your property</button>
+            </div>
+        </form>
+    </div>
+</section>
+<script>
+    const files = document.getElementById("formFileMultiple");
+    const imageGallery = document.getElementById("image-gallery");
+
+    files.addEventListener("change", function () {
+        const files = this.files;
+        if (files) {
+            if (files.length > 9) {
+                alert("You can select only 9 images");
+                return;
+            } else {
+                imageGallery.innerHTML = "";
+                imageGallery.classList.remove("d-none");
+                imageGallery.classList.add("d-flex");
+                Array.from(files).forEach((file) => {
+                    const reader = new FileReader();
+                    reader.addEventListener("load", function () {
+                        const image = document.createElement("img");
+                        image.classList.add("img-fluid", "rounded-2", "col-2", "m-1");
+                        image.src = this.result;
+                        imageGallery.appendChild(image);
+                    });
+                    reader.readAsDataURL(file);
+                });
+            }
+        }
+    });
+
+</script>
+
+{% endblock body %}

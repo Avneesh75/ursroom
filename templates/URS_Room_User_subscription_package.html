@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% include "header.html" with post_property="false" %}
+<section class="owner_profile user_profile subscription_package">
+    <div class="container">
+        <div class="row">
+            {% for sub in subs %}
+            <div class="col-xs-12 col-sm-6 col-lg-3">
+                <div class="suscp_box shadow mx-4 my-5">
+                    <div class="caption_box">
+                        <h1>{{ sub.name }}</h1>
+                        <h3><span><i class="fa-solid fa-indian-rupee-sign"></i></span> {{ sub.discounted_price }}/-</h3>
+                        <p>{{ sub.discount }}% Off rs<span>{{ sub.price }} /-</span></p>
+                        <form action="/billing" method="post" id="paymentForm">{% csrf_token %}
+                            <input type="hidden" name="amount" value="{{ sub.discounted_price }}">
+                            <input type="hidden" name="subscription" value="{{ sub.id }}">
+                            <button type="submit" id="payAmount" class="btn stretched-link">buy now</button>
+                        </form>
+                    </div>
+                    <div class="details_box pt-4">
+                        <div class="mb-3">
+                            <h4>responses</h4>
+                            <span>{{ sub.responses }}</span>
+                        </div>
+                        <div class="my-4">
+                            <h4>verified tag</h4>
+                            <span>
+                                {% if sub.verified_tag == True %}
+                                <i class="fa-solid fa-check"></i>
+                                {% else %}
+                                <i class="fa-solid fa-xmark"></i>
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <div class="my-4">
+                            <h4>higher position in search result</h4>
+                            <span>
+                                {% if sub.higher_position_in_search == True %}
+                                <i class="fa-solid fa-check"></i>
+                                {% else %}
+                                <i class="fa-solid fa-xmark"></i>
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="my-4">
+                            <h4>property description by expert</h4>
+                            <span>
+                                {% if sub.property_description_by_expert == True %}
+                                <i class="fa-solid fa-check"></i>
+                                {% else %}
+                                <i class="fa-solid fa-xmark"></i>
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="my-4">
+                            <h4>property promotion</h4>
+                            <span>
+                                {% if sub.property_promotion == 0 %}
+                                <i class="fa-solid fa-xmark"></i>
+                                {% else %}
+                                {{ sub.property_promotion }} Emails
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="my-4">
+                            <h4>relationship manager</h4>
+                            <span>
+                                {% if sub.relationship_manager == True %}
+                                <i class="fa-solid fa-check"></i>
+                                {% else %}
+                                <i class="fa-solid fa-xmark"></i>
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="my-4">
+                            <h4>professional photoshoot of property</h4>
+                            <span>
+                                {% if sub.professional_photoshoot_of_property == True %}
+                                <i class="fa-solid fa-check"></i>
+                                {% else %}
+                                <i class="fa-solid fa-xmark"></i>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                    {% if sub.recommended %}
+                    <div class="recommnd">
+                        <p> recommended</hp>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</section>
+<!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> -->
+
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+    const handleRecharge = async (amount, plan) => {
+        (async () => {
+            const res = await fetch('/billing/', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({
+                    amount,
+                    username: "{{ request.user.name }}",
+                    subscription: plan
+                })
+            });
+            // const finRes = await res.json();
+            // var options = {
+            //     "key": "rzp_test_uZIppd9mUOdPuG", // Enter the Key ID generated from the Dashboard
+            //     "amount": `${finRes.data.amount}`, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise    
+            //     "currency": "INR",
+            //     "name": "URS Rooms",
+            //     "description": "Buy new Subscription",
+            //     "theme": {
+            //         "color": "#f00"
+            //     },
+            //     "image": "https://ursroom.herokuapp.com/static/images/IMG-20220613-WA0014%201.png",
+            //     "order_id": `${finRes.data.id}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1    
+            //     "callback_url": `/success-payment/`,
+            //     "prefill": {
+            //         "name": "{{ request.user.name }}",
+            //         "email": "{{ request.user.email }}",
+            //         "contact": "{{ request.user.phone_number }}"
+            //     }
+            // };
+            // var rzp1 = new Razorpay(options);
+            // if (finRes.data.id !== null) {
+            //     rzp1.open();
+            //     e.preventDefault();
+            // }
+        })();
+    };
+</script>
+
+{% endblock body %}

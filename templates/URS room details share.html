@@ -1,0 +1,380 @@
+{% extends "base.html" %} {% block body %} {% include "header.html" with post_property="false" %}
+<section class="room_details share_details" id="detail_room_frm">
+  <div class="container">
+    <h1 class="heading">for {{ for_whom }}</h1>
+    <div class="row">
+      <div class="filter_box">
+        <div class="filter_item">
+          <select id="occupancy">
+            Occupancy
+            <option value="" selected>Occupancy</option>
+            <option value="single_room">single room</option>
+            <option value="double_room">double room</option>
+            <option value="triple_room">triple room</option>
+            <option value="four_room">four room</option>
+          </select>
+        </div>
+        <div class="filter_item">
+          <select id="gender">
+            <option value="" selected>gender</option>
+            <option value="Male">male</option>
+            <option value="Female">female</option>
+            <option value="Anyone">anyone</option>
+          </select>
+        </div>
+        <div class="filter_item">
+          <select id="tenants">
+            <option value="" selected>Tenants Preferred</option>
+            <option value="Student">Student</option>
+            <option value="Working Professional">Working Professional</option>
+          </select>
+        </div>
+        <div class="filter_item">
+          <select id="budget">
+            <option value="" selected>Budget</option>
+            <option value="5000">5000</option>
+            <option value="10000">10000</option>
+            <option value="15000">15000</option>
+            <option value="20000">20000</option>
+            <option value="25000">25000</option>
+            <option value="30000">30000</option>
+            <option value="35000">35000</option>
+          </select>
+        </div>
+        <div class="filter_item">
+          <select id="food">
+            <option value="" selected>Food</option>
+            <option value="Breakfast">break fast</option>
+            <option value="Lunch">lunch</option>
+            <option value="Dinner">dinner</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="room_info" id="info_room">
+  <div class="container">
+    <div class="row">
+      {% if properties|length > 0 %}
+      {% for prop in properties %}
+      <div class="col-12 col-md-6 col-lg-4 my-2">
+        <div class="imag_info room_info_fstCol bg-light border">
+          {% if prop.verified %}
+          <div class="verified_room">
+            <h4>verified</h4>
+          </div>
+          {% endif %}
+          <div class="row"style="">
+            <div
+              class="imag_outPut d-flex align-items-center position-relative"
+            >
+              <img
+                src="{{ prop.thumbnail }}"
+                alt=""
+                style="object-fit: cover; height: 220px; width: 100%;"
+              />
+              <!-- create a div with bottom overlay on image -->
+              <div class="overlay position-absolute bottom-0" style="padding-top: 125px;">
+                <div class="text px-4">
+                  <h1 class="mt-2">
+                    <a class="text-decoration-none text-white text-capitalize stretched-link" href="/gallery-details/{{ prop.uuid }}"
+                      >{{ prop.pg_name }}</a
+                    >
+                  </h1>
+                  <p class="text-white fs-5 text-truncate mb-0">
+                    <span><i class="fas fa-map-marker-alt"></i></span> {{prop.locality }}, {{ prop.landmark }}, {{ prop.city }}, india
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <p class="text-light fs-4 mb-0">
+                      {% if prop.min_amount.room_type == "Single" %} Single Sharing {% elif prop.min_amount.room_type == "Double" %} Double Sharing {% elif prop.min_amount.room_type == "Triple" %} Triple Sharing {% elif prop.min_amount.room_type == "Four" %} Four Sharing {% endif %}
+                    </p>
+                    <h2 class="text-white fw-bold rounded-pill bg-danger p-1 px-3">₹{{ prop.min_amount.amount }}</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="item_of_facolities_icon">
+                <div class="row px-5 fs-5">
+                  {% if prop.min_amount.room_type == "Single" %}
+                    {% for feature in prop.single_room_extra_features %}
+                      <div class="col-4 icon_box d-flex align-content-center py-1">
+                        {% if feature == "Cupboard" %}
+                          <img src="/static/images/Cupboard1.png" alt="" />
+                        {% elif feature == "AC" %}
+                          <img src="/static/images/ac.png" alt="" />
+                        {% elif feature == "Attached Bathroom" %}
+                          <img src="/static/images/bathtub.png" alt="" />
+                        {% elif feature == "Bedding" %}
+                          <img src="/static/images/beding.png" alt="" />
+                        {% elif feature == "Geyser" %}
+                          <img src="/static/images/geyser.png" alt="" />
+                        {% elif feature == "TV" %}
+                          <img src="/static/images/tv.png" alt="" />
+                        {% endif %}
+                          <p class="mb-0">{{ feature }}</p>
+                      </div>
+                    {% endfor %}
+                  {% elif prop.min_amount.room_type == "Double" %}
+                    {% for feature in prop.double_room_extra_features %}
+                      <div class="col-4 icon_box d-flex align-content-center py-1">
+                        {% if feature == "Cupboard" %}
+                          <img src="/static/images/Cupboard1.png" alt="" />
+                        {% elif feature == "AC" %}
+                          <img src="/static/images/ac.png" alt="" />
+                        {% elif feature == "Attached Bathroom" %}
+                          <img src="/static/images/bathtub.png" alt="" />
+                        {% elif feature == "Bedding" %}
+                          <img src="/static/images/beding.png" alt="" />
+                        {% elif feature == "Geyser" %}
+                          <img src="/static/images/geyser.png" alt="" />
+                        {% elif feature == "TV" %}
+                          <img src="/static/images/tv.png" alt="" />
+                        {% endif %}
+                        <p class="mb-0">{{ feature }}</p>
+                      </div>
+                    {% endfor %}
+                  {% elif prop.min_amount.room_type == "Triple" %}
+                    {% for feature in prop.triple_room_extra_features %}
+                      <div class="col-4 icon_box d-flex align-content-center py-1">
+                        {% if feature == "Cupboard" %}
+                          <img src="/static/images/Cupboard1.png" alt="" />
+                        {% elif feature == "AC" %}
+                          <img src="/static/images/ac.png" alt="" />
+                        {% elif feature == "Attached Bathroom" %}
+                          <img src="/static/images/bathtub.png" alt="" />
+                        {% elif feature == "Bedding" %}
+                          <img src="/static/images/beding.png" alt="" />
+                        {% elif feature == "Geyser" %}
+                          <img src="/static/images/geyser.png" alt="" />
+                        {% elif feature == "TV" %}
+                          <img src="/static/images/tv.png" alt="" />
+                        {% endif %}
+                        <p class="mb-0">{{ feature }}</p>
+                      </div>
+                    {% endfor %}
+                  {% elif prop.min_amount.room_type == "Four" %}
+                    {% for feature in prop.four_room_extra_features %}
+                      <div class="col-4 icon_box d-flex align-content-center py-1">
+                        {% if feature == "Cupboard" %}
+                          <img src="/static/images/Cupboard1.png" alt="" />
+                        {% elif feature == "AC" %}
+                          <img src="/static/images/ac.png" alt="" />
+                        {% elif feature == "Attached Bathroom" %}
+                          <img src="/static/images/bathtub.png" alt="" />
+                        {% elif feature == "Bedding" %}
+                          <img src="/static/images/beding.png" alt="" />
+                        {% elif feature == "Geyser" %}
+                          <img src="/static/images/geyser.png" alt="" />
+                        {% elif feature == "TV" %}
+                          <img src="/static/images/tv.png" alt="" />
+                        {% endif %}
+                        <p class="mb-0">{{ feature }}</p>
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+              <a
+                href="#owner_details_form_modal"
+                class="btn btn_owner btn-danger py-2 fs-2 text-capitalize"
+                onclick="getPropertyUserId('{{ prop.user.id }}', '{{ prop.uuid }}')"
+                data-bs-toggle="modal"
+              >
+                contact owner
+                </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div
+        class="col-12 d-flex justify-content-center align-items-center flex-column"
+      >
+        <h3 class="text-center display-4">No Property Found</h3>
+        <img
+          src="/static/images/not-found.png"
+          alt="not-found"
+          width="800"
+          class="img-fluid"
+        />
+      </div>
+      {% endif %}
+      <div
+        class="modal fade"
+        id="owner_details_form_modal"
+        aria-hidden="true"
+        aria-labelledby="owner_details_form_modal"
+        tabindex="-1"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header form_head">
+              <div class="modal_text_part">
+                <div class="part_text">
+                  <h5 class="modal-title" id="owner_details_form_modal">
+                    get owner detais
+                  </h5>
+                  <p class="text-secondary">100% genuine owner zero brokage</p>
+                </div>
+                <div class="part_img">
+                  <img
+                    src="/static/images/owner_ph-02.png"
+                    alt=""
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body form_owner_body">
+              <div class="container">
+                <h3 class="heading">provide your details</h3>
+                <form action="/store-response" method="post">
+                  {% csrf_token %}
+                  <div class="mt-3">
+                    <label for="name" class="form-label">your name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Enter Your Full Name"
+                      required
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="mt-3">
+                    <label for="email" class="form-label">your email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Enter Your Email"
+                      required
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="mt-3">
+                    <label for="mobile" class="form-label">your mobile</label>
+                    <input
+                      type="phone"
+                      maxlength="10"
+                      minlength="10"
+                      name="phone"
+                      placeholder="Enter Your Mobile Number"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <!-- <div class="form-check form-switch mt-3">
+                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
+                                                checked>
+                                            <label class="form-check-label" for="flexSwitchCheckChecked">get update on
+                                                whatsaap</label>
+                                        </div> -->
+                  <div class="mt-3 d-flex">
+                    <input
+                      type="hidden"
+                      name="user"
+                      id="propertyUser"
+                      value=""
+                    />
+                    <input type="hidden" name="prop" id="property" value="" />
+                    <input
+                      type="checkbox"
+                      class="form-check check_box"
+                      required
+                    />
+                    <label for="" class="form-label check_label mx-2"
+                      >Yes I agreed The Terms & conditions</label
+                    >
+                  </div>
+                  <div class="mt-3">
+                    <button type="submit" class="btn">get owner details</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function getPropertyUserId(id, uuid) {
+    document.getElementById("propertyUser").value = parseInt(id);
+    document.getElementById("property").value = uuid;
+  }
+  // get url search params
+  const url = new URL(window.location.href);
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has("occupancy")) {
+    document.getElementById("occupancy").value = urlParams.get("occupancy");
+  }
+  if (urlParams.has("gender")) {
+    document.getElementById("gender").value = urlParams.get("gender");
+  }
+  if (urlParams.has("tenants")) {
+    document.getElementById("tenants").value = urlParams.get("tenants");
+  }
+  if (urlParams.has("budget")) {
+    document.getElementById("budget").value = urlParams.get("budget");
+  }
+  if (urlParams.has("food")) {
+    document.getElementById("food").value = urlParams.get("food");
+  }
+  document.getElementById("occupancy").addEventListener("change", function () {
+    if (this.value === "") {
+      url.searchParams.delete("occupancy");
+      window.location.href = url;
+      return;
+    }
+    url.searchParams.set("occupancy", this.value);
+    window.location.href = url;
+  });
+  document.getElementById("gender").addEventListener("change", function () {
+    if (this.value === "") {
+      url.searchParams.delete("gender");
+      window.location.href = url;
+      return;
+    }
+    url.searchParams.set("gender", this.value);
+    window.location.href = url;
+  });
+  document.getElementById("tenants").addEventListener("change", function () {
+    if (this.value === "") {
+      url.searchParams.delete("tenants");
+      window.location.href = url;
+      return;
+    }
+    url.searchParams.set("tenants", this.value);
+    window.location.href = url;
+  });
+  document.getElementById("budget").addEventListener("change", function () {
+    if (this.value === "") {
+      url.searchParams.delete("budget");
+      window.location.href = url;
+      return;
+    }
+    url.searchParams.set("budget", this.value);
+    window.location.href = url;
+  });
+  document.getElementById("food").addEventListener("change", function () {
+    if (this.value === "") {
+      url.searchParams.delete("food");
+      window.location.href = url;
+      return;
+    }
+    url.searchParams.set("food", this.value);
+    window.location.href = url;
+  });
+</script>
+
+{% endblock body %}

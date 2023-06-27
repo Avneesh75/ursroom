@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block body %}
+    {% include "header.html" with post_property="false" %}
+    <section class="owner_call" id="owner_call_details">
+        <div class="container">
+            <div class="row">
+                <h3 class="heading"><i class="fas fa-check-circle"></i>thank you</h3>
+                <p class="sub_heading">email/sms has been sent to the owner</p>
+                
+                <div class="user_for">
+                    <div class="owner_icon">
+                        <img src="/static/images/owner.png" alt="" class="">
+                    </div>
+                    <div class="owner_text">
+                        <h5>{{ name }}</h5>
+                        <p class="fs-3 px-4 fw-bold">+91 {{ phone }}</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center w-100">
+                    <div class="row mt-4 w-50">
+                        <div class="col-6 d-flex justify-content-center align-content-center">
+                            <a href="tel:{{phone}}" class="btn btn-success btn-lg d-flex justify-content-center align-content-center p-4 rounded-circle">
+                                <span class="d-flex fs-1">
+                                    <i class="fa fa-phone m-auto"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-6 d-flex justify-content-center align-content-center">
+                            <a href="https://wa.me/{{phone}}?text=Hi, I am interested in your property" class="btn btn-success btn-lg d-flex justify-content-center align-content-center p-4 rounded-circle">
+                                <span class="d-flex fs-1">
+                                    <i class="fa fa-whatsapp m-auto"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+{% endblock body %}

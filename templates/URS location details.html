@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+   <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+    <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css"/>
+   <style>
+    #map { height: 350px; }
+    #currentlocation {
+        z-index: 1222;
+        left: 20px;
+        top: 120px;
+        border-radius: 40px;
+    }
+
+   </style>
+{% endblock css %}
+
+{% block body %}
+{% include "header.html" with post_property="false" %}
+    <section class="location_details" id="detail_room_frm">
+        <div class="container">
+            <form method="post" class="roomDetails"> {% csrf_token %}
+                <h1 class="heading">location details</h1>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12 top_input mt-5">
+                        <div class="mb-3 mx-3">
+                            <label for="city" class="form-label">city</label>
+                            <select name="city" name="city" id="yourCity" class="form-select">
+                                <option selected disabled value="">Choose City...</option>
+                                <option {% if prop.city == "Kolkata" %}selected{% endif %} value="Kolkata">Kolkata</option>
+                                <option {% if prop.city == "Bangalore" %}selected{% endif %} value="Bangalore">Bangalore</option>
+                                <option {% if prop.city == "Delhi" %}selected{% endif %} value="Delhi">Delhi</option>
+                                <option {% if prop.city == "Mumbai" %}selected{% endif %} value="Mumbai">Mumbai</option>
+                                <option {% if prop.city == "Hydrabad" %}selected{% endif %} value="Hydrabad">Hyderabad</option>
+                                <option {% if prop.city == "Ahmedabad" %}selected{% endif %} value="Ahmedabad">Ahmedabad</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 mx-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">locality</label>
+                            <input class="form-control" value="{{ prop.locality }}" name="locality">
+                        </div>
+                        <div class="mb-3 mx-3">
+                            <label for="exampleFormControlInput1" class="form-label">land mark/street</label>
+                            <input type="text" name="landmark" value="{{ prop.landmark }}" class="form-control" required>
+                        </div>
+                        <div class="mb-3 mx-3">
+                            <label for="exampleFormControlInput1" class="form-label" >pG name</label>
+                            <input type="text" name="pg_name" value="{{ prop.pg_name }}" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12 mt-5 position-relative">
+                        <div id="map"></div>
+                        <div class="position-absolute btn btn-primary" onclick="getLocation()" id="currentlocation">
+                            Use current location
+                        </div>
+                    </div>
+
+                    <h2 class="heading mt-5">pg details</h2>
+                    <div class="row">
+                        <div class="d-flex justify-centent-center aliign-items-center flex-wrap">
+                            <div class=" col-lg-4 col-sm-12 shadow ">
+                                <h3>PG available for</h3>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"
+                                        id="male" name="pg_available_for" {% if prop.pg_available_for == "Male" %}checked{% endif %} value="Male" required>
+                                    <label class="form-check-label" for="male">male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"
+                                        id="female" name="pg_available_for" {% if prop.pg_available_for == "Female" %}checked{% endif %} value="Female">
+                                    <label class="form-check-label" for="female">female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"
+                                        id="inlineRadio3" name="pg_available_for" {% if prop.pg_available_for == "Anyone" %}checked{% endif %} value="Anyone">
+                                    <label class="form-check-label" for="anyone">anyone</label>
+                                </div>
+                                <div class="mb-2">
+                                    <label for="" class="form-label">preferred tenants</label>
+                                    <select class="form-select" name="preferred_tenants">
+                                        <option {% if prop.preferred_tenants == "Girls" %}selected{% endif %} value="Girls">Girls</option>
+                                        <option {% if prop.preferred_tenants == "Boys" %}selected{% endif %} value="Boys">Boys</option>
+                                        <option {% if prop.preferred_tenants == "Working Professional" %}selected{% endif %} value="Working Professional">Profesiinal Working</option>
+                                        <option {% if prop.preferred_tenants == "Student" %}selected{% endif %} value="Student">Co-living</option>
+                                    </select>
+                                </div>
+                                <div class="mb-2">
+                                    <label for="" class="form-label">available date</label>
+                                    <input type="date" value='{{ prop.available_date|date:"Y-m-d" }}' name="available_date" class="form-control">
+                                </div>
+                            </div>
+                            <div class=" col-lg-4 col-sm-12 shadow ">
+                                <h3>Food included</h3>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="food_included" id="food_yes"
+                                        value="yes" required {% if prop.food_included == True %}checked{% endif %}>
+                                    <label class="form-check-label" for="food_yes">yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" {% if prop.food_included == False %}checked{% endif %} type="radio" name="food_included" id="food_no"
+                                        value="no" required>
+                                    <label class="form-check-label" for="food_no">no</label>
+                                </div>
+                                <br>
+                                <div class="col-12">
+                                    <div class="collapse {% if prop.food_included %}show{% endif %}" id="pgMenu">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" {% if "Breakfast" in prop.food_included_details %}checked{% endif %} name="food_included_brekfast" type="checkbox" id="inlineCheckbox1">
+                                            <label class="form-check-label" for="inlineCheckbox1">break fast</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" {% if "Lunch" in prop.food_included_details %}checked{% endif %} name="food_included_lunch" type="checkbox" id="inlineCheckbox2">
+                                            <label class="form-check-label" for="inlineCheckbox2">lunch</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" {% if "Dinner" in prop.food_included_details %}checked{% endif %} name="food_included_dinner" type="checkbox" id="inlineCheckbox3">
+                                            <label class="form-check-label" for="inlineCheckbox3">dinner</label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="gate-timing" class="form-label">Gate Closing Time</label>
+                                        <input type="time" class="form-control" value='{{ prop.gate_closing_time|date:"H:i:s" }}' name="gate_closing_time" placeholder="enter gate closing time">
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" {% if "No Smoking" in prop.pg_other_details %}checked{% endif %} name="pg_other_details_smoking" type="checkbox" id="noSmoking">
+                                        <label class="form-check-label" for="noSmoking">no smoking</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" {% if "No Guardian" in prop.pg_other_details %}checked{% endif %} name="pg_other_details_guardian" type="checkbox" id="guardian">
+                                        <label class="form-check-label" for="guardian">no guardian</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" {% if "No Drinking" in prop.pg_other_details %}checked{% endif %} name="pg_other_details_drinking" type="checkbox" id="no-drinking">
+                                        <label class="form-check-label" for="no-drinking">no drinking</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" {% if "No Girls Entry" in prop.pg_other_details %}checked{% endif %} name="pg_other_details_girls_entry" type="checkbox" id="noGirlsEntry">
+                                        <label class="form-check-label" for="noGirlsEntry">no girls entry</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" {% if "No Non-Veg" in prop.pg_other_details %}checked{% endif %} name="pg_other_details_non_veg" type="checkbox" id="nononVeg">
+                                        <label class="form-check-label" for="nononVeg">no none veg.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-lg-4 col-sm-12 shadow ">
+                                <div class="mb-3 mx-3">
+                                    <input type="hidden" name="latitude" id="latitude">
+                                    <input type="hidden" name="longitude" id="longitude">
+                                    <label for="massage" class="form-label">spacify others rules</label>
+                                    <textarea class="form-control" rows="8" name="pg_other_rules" required>{% if prop.pg_other_rules %}{{ prop.pg_other_rules }}{% endif %}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pg_button text-center">
+                    <button type="submit" class="btn btn-danger"> start post your property</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+
+        const foodPrefNo = document.getElementById('food_no');
+        const foodPrefYes = document.getElementById('food_yes');
+        const pgMenu = document.getElementById('pgMenu');
+
+        foodPrefNo.addEventListener('click', () => {
+            pgMenu.classList.remove('show');
+        });
+
+        foodPrefYes.addEventListener('click', () => {
+            pgMenu.classList.add('show');
+        });
+
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            mymap.setView([parseFloat(position.coords.latitude), parseFloat(position.coords.longitude)], 12);
+            var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(markerLayer);
+            document.getElementById('latitude').value = parseFloat(position.coords.latitude);
+            document.getElementById('longitude').value = parseFloat(position.coords.longitude);
+        }
+
+        var mymap = L.map('map').setView([20.5937, 78.9629], 4);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 20,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiYWxhbmthcjI3MTIiLCJhIjoiY2tsMG54NWRhMDg5YzJxbzRhMW8xcnM0cCJ9.ryiqXISFg1YXy4258NYcgQ'
+        }).addTo(mymap);
+
+        var searchControl = new L.esri.Controls.Geosearch().addTo(mymap);
+
+        var results = new L.LayerGroup().addTo(mymap);
+        var markerLayer = new L.LayerGroup().addTo(mymap);
+
+        {% if prop.latitude and prop.longitude %}
+            mymap.setView([parseFloat("{{ prop.latitude }}"), parseFloat("{{ prop.longitude }}")], 12);
+            var marker = L.marker([{{ prop.latitude }}, {{ prop.longitude }}]).addTo(markerLayer);
+            document.getElementById('latitude').value = parseFloat("{{ prop.latitude }}");
+            document.getElementById('longitude').value = parseFloat("{{ prop.longitude }}");
+        {% endif %}
+
+        searchControl.on('results', function(data){
+            results.clearLayers();
+            for (var i = data.results.length - 1; i >= 0; i--) {
+                var marker = L.marker(data.results[i].latlng, {draggable: true})
+                markerLayer.clearLayers();
+                results.addLayer(marker);
+                document.getElementById('latitude').value = marker.getLatLng().lat
+                document.getElementById('longitude').value = marker.getLatLng().lng
+                marker.on('dragend', (e) => {
+                    document.getElementById('latitude').value = marker.getLatLng().lat
+                    document.getElementById('longitude').value = marker.getLatLng().lng
+                })
+            }
+        });
+    </script>
+
+{% endblock body %}

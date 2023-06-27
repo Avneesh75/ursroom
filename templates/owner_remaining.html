@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% include "header.html" with post_property="false" %}
+    <section class="owner_call" id="owner_call_details">
+        <div class="container">
+            <div class="row">
+                <h3 class="heading">your remaining</h3>
+                
+                <div class="user_for">
+                    <div class="owner_icon">
+                        <img src="/static/images/remaining.jpg" alt="" class="">
+                    </div>
+                    <div class="owner_text">
+                        <h5>{{ request.user.responses }}</h5>
+                    </div>
+                </div>
+                <div class="owner_btn">
+                    <a href="/ursroom-room-user-subscription" class="btn btn-success text-capitalize">update your plan</a>
+                </div>
+            </div>
+    </section>
+
+{% endblock body %}

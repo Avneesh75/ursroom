@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+{% include "header.html" with post_property="true" %}
+<section class="container mt-5">
+
+
+<div style="margin-bottom: 40px;">
+  <h1 class="text-center mb-5" style="
+          font-weight: bold;
+          font-size: 6rem;
+          padding: 2% 5%;
+          text-underline-offset: 1rem;">
+        <span style="text-decoration: underline red;">
+          Contact
+        </span>
+        <span style="color: red; text-decoration: underline black;">Us</span> </div>
+  <!--Contact heading-->
+  <div class="row">
+    <!--Grid column-->
+    <div class="col-sm-12 mb-4 col-md-5">
+      <!--Form with header-->
+      <div class="card border-red" style="border-radius: 10px;">
+        <div class="card-header p-0 bg-red" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+          <div class="bg-red text-white text-center py-2" style="border-top-left-radius: 10px; border-top-right-radius: 10px;">
+            <h2 class="fs-1">Fill Out Form</h2>
+          </div>
+        </div>
+        <div class="card-body p-3">
+
+          <form method="post"> {% csrf_token %}
+            <div class="form-group">
+              <label> Your name </label>
+              <div class="input-group">
+                <input value="" type="text" name="name" class="form-control" id="inlineFormInputGroupUsername"
+                  placeholder="Your name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Your email</label>
+              <div class="input-group mb-2 mb-sm-0">
+                <input type="email" value="" name="email" class="form-control" id="inlineFormInputGroupUsername"
+                  placeholder="Email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Your Mobile Number</label>
+              <div class="input-group mb-2 mb-sm-0">
+                <input type="text" name="phone" class="form-control" id="inlineFormInputGroupUsername"
+                  placeholder="Subject" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <div class="input-group mb-2 mb-sm-0">
+                <textarea name="message" id="" cols="30" rows="3" required placeholder="Message" class="form-control contact-textarea"></textarea>
+              </div>
+            </div>
+            <div class="mt-3">
+              <input type="submit" name="submit" value="Submit" class="btn btn-danger btn-red btn-lg py-3 px-5">
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-sm-12 col-md-7">
+      <!--Google map-->
+      <div class="mb-4">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.8970000000003!2d77.5940003148213!3d12.971891990869351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15a1f5c8b8a7%3A0x8b5b2b2b2b2b2b2b2!2s18%2C%202nd%20Cross%2C%20Shree%20Nidhi%20Layout%2C%20Hero%20Halli%2C%20Bangalore%2C%20Karnataka%20560091!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin"
+          width="100%"
+          height="450"
+          frameborder="0"
+          style="border: 0"
+          allowfullscreen=""
+          aria-hidden="false"
+          tabindex="0"
+        ></iframe>
+      </div>
+      <!--Buttons-->
+      <div class="row text-center">
+        <div class="col-md-4">
+          <a class="bg-red px-3 py-2 rounded text-white mb-2 d-inline-block fs-2"><i class="fa fa-map-marker"></i></a>
+          <p class="fs-5">18, 2nd cross, Shree Nidhi Layout, HeroHalli, Bangalore, Karnataka, 560091</p>
+        </div>
+        <div class="col-md-4">
+          <a class="bg-red px-3 py-2 rounded text-white mb-2 d-inline-block fs-2"><i class="fa fa-phone"></i></a>
+          <p class="fs-5">+91 8617373674</p>
+        </div>
+        <div class="col-md-4">
+          <a class="bg-red px-3 py-2 rounded text-white mb-2 d-inline-block fs-2"><i class="fa fa-envelope"></i></a>
+          <p class="fs-5">myursroom@gmail.com</p>
+        </div>
+      </div>
+    </div>
+    <!--Grid column-->
+  </div>
+</section>
+
+{% endblock body %}

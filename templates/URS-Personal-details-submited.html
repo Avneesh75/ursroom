@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% include "header.html" with post_property="false" %}
+    <section class="location_details congrats" id="congrats">
+        <div class="container">
+            <h1 class="heading">your details successfully submitted</h1>
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <img src="/static/images/smile-01 1.png" alt="" class="img-fluid">
+                </div>
+            </div>
+            <h1 class="heading">congratulations</h1>
+            <p class="text-center para">Within 24 hours your property will be live in our site.</p>
+            <div class="mb-3 text-center cong_btn">
+                <a href="/" class="text-center btn btn-danger">back to home page</a>
+            </div>
+
+        </div>
+    </section>
+{% endblock body %}

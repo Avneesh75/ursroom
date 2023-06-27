@@ -1,0 +1,1139 @@
+{% extends "base.html" %}
+
+{% block css %}
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+   <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet/0.0.1-beta.5/esri-leaflet.js"></script>
+    <script src="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn-geoweb.s3.amazonaws.com/esri-leaflet-geocoder/0.0.1-beta.5/esri-leaflet-geocoder.css"/>
+   <style>
+    
+    #map {
+        height: 350px;
+    }
+
+    #navigateBtn {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        z-index: 999;
+    }
+    .carousel {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .image-container:hover .carousel {
+        display: block;
+      }
+      .carousel {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; /* Set the desired width of the carousel */
+      height: 400px; /* Set the desired height of the carousel */
+    }
+    .image-container:hover .carousel {
+      display: block;
+    }
+    .carousel-inner {
+      width: 100%;
+      height: 100%;
+    }
+    .carousel-inner .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .nav{
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        text-transform: capitalize;
+        border: 0.1rem solid red;
+        border-radius: 1.5rem;
+        background-color: white;
+        text-decoration: none;
+    }
+    
+    .price {
+        margin-left: 750px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1rem;
+    }  
+    
+   </style>
+{% endblock css %}
+
+{% block body %}
+{% include "header.html" with post_property="false" %}
+
+    
+    <section class="room_info room_gallery_info" id="info_room">
+        <div class="container">
+            {% comment %} <div class="swiper gallery_slider">
+                <div class="swiper-wrapper">
+                    {% if prop.image_1 %}
+                        <div class="swiper-slide">
+                            <img src="{{ prop.image_1.url }}" alt="">
+                        </div>
+                    {% endif %}
+                    {% if prop.image_2 %}
+                        <div class="swiper-slide">
+                            <img src="{{ prop.image_2.url }}" alt="">
+                        </div>
+                    {% endif %}
+                    {% if prop.image_3 %}
+                        <div class="swiper-slide">
+                            <img src="{{ prop.image_3.url }}" alt="">
+                        </div>
+                    {% endif %}
+                    {% if prop.image_4 %}
+                        <div class="swiper-slide">
+                            <img src="{{ prop.image_4.url }}" alt="">
+                        </div>
+                    {% endif %}
+                    {% if prop.image_5 %}
+                        <div class="swiper-slide">
+                            <img src="{{ prop.image_5.url }}" alt="">
+                        </div>
+                    {% endif %}
+                    {% if prop.image_6 %}
+                        <div class="swiper-slide">
+                            <img src="{{ prop.image_6.url }}" alt="">
+                        </div>
+                    {% endif %}
+                    {% if prop.image_7 %}
+                        <div class="swiper-slide">
+                            <img src="{{ prop.image_7.url }}" alt="">
+                        </div>
+                    {% endif %}
+                    {% if prop.image_8 %}
+                        <div class="swiper-slide">
+                            <img src="{{ prop.image_8.url }}" alt="">
+                        </div>
+                    {% endif %}
+                    {% if prop.image_9 %}
+                        <div class="swiper-slide">
+                            <img src="{{ prop.image_9.url }}" alt="">
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div> {% endcomment %}
+
+            <!-- Button trigger modal -->
+            
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="swiper gallery_slider">
+                            <div class="swiper-wrapper">
+                                {% if prop.image_1 %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ prop.image_1.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% if prop.image_2 %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ prop.image_2.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% if prop.image_3 %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ prop.image_3.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% if prop.image_4 %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ prop.image_4.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% if prop.image_5 %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ prop.image_5.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% if prop.image_6 %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ prop.image_6.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% if prop.image_7 %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ prop.image_7.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% if prop.image_8 %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ prop.image_8.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                                {% if prop.image_9 %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ prop.image_9.url }}" alt="">
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            
+            <div style=" margin-top: 50px; display: flex; gap:10px; width:100%; height:400px;" class="image-container">
+                {% if prop.image_1 %}
+                <div style=" width:60%; height:100%;">
+                    <a  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img style="  border-radius: 10px;    width:100%; height:100%;      background-repeat: no-repeat;
+                    background-size: contain;  " src="{{ prop.image_1.url }}" alt="Image" width="300" height="200">    
+                    </a> 
+                </div>
+                {% endif %}
+                   
+                <div style=" width:40%; height: 100%; gap:10px; display:flex; flex-direction: column;  ">
+                {% if prop.image_2 %}
+                <div style="width:100%; height:59%; ">
+                    <a  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <img style="width:100%; height:100%;  border-radius: 10px;     background-repeat: no-repeat;
+                    background-size: contain; "  src="{{ prop.image_2.url }}" alt="Image" width="300" height="200">
+                    </a> 
+                </div>
+                {% endif %}
+                <div style="display:flex; justify-content:space-between;      height:38%;">
+                {% if prop.image_3 %}
+                  
+                    <img style=" height: 100%; border-radius: 10px; background-repeat: no-repeat;
+                    background-size: contain;  "src="{{ prop.image_3.url }}" alt="Image" width="49%" height="200">
+                    
+                {% endif %}
+                {% if prop.image_4 %}
+                    <img style= " height: 100%; border-radius: 10px; background-repeat: no-repeat; background-size: contain;  "src="{{ prop.image_4.url }}" alt="Image" width="49%" height="200">
+                {% endif %}
+                </div>                      
+                </div>
+                {% comment %} <div style="height: 500px; width: 500px;" id="myCarousel" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                    <li data-target="#myCarousel" data-slide-to="5"></li>
+                    <li data-target="#myCarousel" data-slide-to="6"></li>
+                  </ol>
+                  <div style="height: 500px; width: 500px;" class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="{{ prop.image_1.url }}" alt="Carousel Image 1" width="300" height="200">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{{ prop.image_2.url }}" alt="Carousel Image 2" width="300" height="200">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{{ prop.image_3.url }}" alt="Carousel Image 3" width="300" height="200">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{{ prop.image_4.url }}" alt="Carousel Image 3" width="300" height="200">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ prop.image_5.url }}" alt="Carousel Image 3" width="300" height="200">
+                    </div>
+                  </div> {% endcomment %}
+                </div>
+              </div>
+            </div>
+
+
+
+        <div class="container col-12 mt-5" style="border:solid grey; padding: 10px;">
+            <div class="row row-cols-auto fs-3 font-italic">
+              <a class="col " action="active" style="text-decoration: none; color: black;" href="#">Overview</a>
+              <a class="col" style="text-decoration: none; color: black;" href="#">Rooms</a>
+              <a class="col" style="text-decoration: none; color: black;" href="#">Facility</a>
+              <a class="col" style="text-decoration: none; color: black;" href="#">Location</a>
+
+              <span class="text-center text-capitalize" style="font-size: 10px; margin-left: 700px;padding-top: 10PX;">from</span>
+              <span class="text-center text-capitalize" style="font-size: 14px;  color: red; padding-top: 10px;">Rs.</span>
+              <span  class="text-center text-capitalize" style="font-size: 20px;  color: red;">2,923</span>
+              <button type="button" class="btn btn-primary" style="font-size: 16px">View This Deal</button>
+            </div>
+        </div>
+
+            <div class="container">
+                <div class="row g-5 gall_top">
+                    <div class="col-lg-9 shadow">
+                        <div class="row pg_dtls">
+                            <div class="pg_name">
+                                <h2>{{ prop.pg_name }}</h2>
+                                <hr>
+                                <p> <span class="pe-3"><i class="fas fa-map-marker-alt"></i></span>{{ prop.landmark }}, {{ prop.locality }}, {{ prop.city }}, india</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    {% if prop.verified %}
+                        <div class="col-lg-3">
+                            <div class="rate_outPut gall_price shadow">
+                                <h1 class="text-center text-light text-capitalize bg-dark py-2">verified</h1>
+                                <div class="col-12 d-flex bg-light mt-2 other_part">
+                                    <img src="/static/images/VERIFIED-02.png" alt="" class="img-fluid">
+                                </div>
+                                <div class="col-12 d-flex bg-light mt-2 other_part">
+                                    <p class="text-dark  text-left">by</p>
+                                    <p class="text-dark">URS Rooms</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+
+            <div class="container">
+                <div class="row g-5 gall_top">
+                    <div class="col-lg-9 shadow">
+                        <div class="row pg_dtls">
+                            <div class="pg_name">
+                                <h2>pg description</h2>
+                                <hr>
+                                <p>{{ prop.property_description }}</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    {% comment %} overview {% endcomment %}
+                    <div class="col-lg-3">
+                        <div class="rate_outPut gall_price shadow">
+                            <h4>Overall Rating:-</h4>
+                            <p>Cleanliness</p>
+                            <div class="progress">
+                               <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                            </div>
+                            <p>Facilities</p>
+                            <div class="progress">
+                               <div class="progress-bar" role="progressbar" style="width: 69%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">69%</div>
+                            </div>
+                            <p>Location</p>
+                            <div class="progress">
+                               <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">80%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                {% if prop.single_room %}
+                    <div class="row g-5 gall_top my-3">
+                        <div class="col-lg-9 shadow">
+                            <div class="row pg_dtls">
+                                <div class="my-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h3><b>Single Sharing</b></h3>
+                                        </div>
+                                        <div class="col-lg-6 price_room">
+                                            <h4 class="">PG Occupancy</h4>
+                                            <h4>Rs {{ prop.single_room_expected_rent }}/-</h4>
+                                        </div>
+                                        <div class="col-lg-6 price_room">
+                                            <h4 class="">PG Diposit</h4>
+                                            <h4 class="prce">Rs {{ prop.single_room_deposit_rent }}/-</h4>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="aminities">
+                                        <h4 class="text-capitalize">amenities</h4>
+                                        <div class="d-flex room_icon">
+                                            {% if "Bedding" in prop.single_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/bed.png" style="height:70px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>bed</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Attached Bathroom" in prop.single_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/bath.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>attach bathroom</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "TV" in prop.single_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/tele.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>TV</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "AC" in prop.single_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/air.png" style="height:60px; width:50px;margin:15px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>AC</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Cupboard" in prop.single_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/cupboard.png" style="height:60px; width:50px;margin:15px;" alt="" height="50px" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Cupboard</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Geyser" in prop.single_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/gey.png" style="height:60px; width:60px;margin:13px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Geyser</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% comment %} <div class="col-1 icons_for_room other">
+                                                <a href="" data-bs-toggle="collapse" data-bs-target="#otherIcon_collaps_single">more</a>
+                                            </div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                    {% comment %} <div class="collapse" id="otherIcon_collaps_single">
+                                        <h4 class="text-capitalize">common amenities</h4>
+                                        <div class="d-flex room_icon">
+                                            {% if "wifi" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/wifi.png" style="height:60px; width:60px;margin:15px" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>wi-Fi</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "lift" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/Lift.png" style="height:60px; width:50px;margin:15px" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Lift</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "power backup" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/power.png" style="height:60px; width:50px;margin:15px"  alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Power Backup</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "mess" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/house.png" style="height:60px; width:50px;margin:10px;"  alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Mess</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "refrigerator" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/ref.png"  style="height:60px; width:50px;margin:10px;"  alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Refrigerator</b></p>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div> {% endcomment %}
+                                    {% comment %} <hr> {% endcomment %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="rate_outPut gall_price shadow">
+                                <p>Single Sharing</p>
+                                <h4>Rs {{ prop.single_room_expected_rent }}/- </h4>
+                                <a href="#owner_details_form_modal" class="btn btn_owner" onclick="getPropertyUserId('{{ prop.user.id }}', '{{ prop.uuid }}')" data-bs-toggle="modal">contact
+                                    owner</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if prop.double_room %}
+                    <div class="row g-5 gall_top my-3">
+                        <div class="col-lg-9 shadow">
+                            <div class="row pg_dtls">
+                                <div class="my-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h3><b>Double Sharing</b></h3>
+                                        </div>
+                                        <div class="col-lg-6 price_room">
+                                            <h4 class="">PG Occupancy</h4>
+                                            <h4>Rs {{ prop.double_room_expected_rent }}/-</h4>
+                                        </div>
+                                        <div class="col-lg-6 price_room">
+                                            <h4 class="">PG Diposit</h4>
+                                            <h4 class="prce">Rs {{ prop.double_room_deposit_rent }}/-</h4>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="aminities">
+                                        <h4 class="text-capitalize">Amenities</h4>
+                                        <div class="d-flex room_icon">
+                                            {% if "Bedding" in prop.double_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/bed.png" style="height:70px; width:60px;margin:10px;"  alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Bed</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Attached Bathroom" in prop.double_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/bath.png" style="height:60px; width:50px;margin:10px;"  alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Attach Bathroom</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "TV" in prop.double_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/tele.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>TV</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "AC" in prop.double_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/air.png" style="height:60px; width:50px;margin:15px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>AC</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Cupboard" in prop.double_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/cupboard.png" style="height:60px; width:50px;margin:15px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Cupboard</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Geyser" in prop.double_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/gey.png" style="height:60px; width:60px;margin:13px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Geyser</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% comment %} <div class="col-1 icons_for_room other">
+                                                <a href="" data-bs-toggle="collapse" data-bs-target="#otherIcon_collaps_double">more</a>
+                                            </div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                    {% comment %} <div class="collapse" id="otherIcon_collaps_double">
+                                        <h4 class="text-capitalize">common amenities</h4>
+                                        <div class="d-flex room_icon">
+                                            {% if "wifi" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/wifi.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>wi-Fi</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "lift" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/Lift.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Lift</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "power backup" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/power.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Power Backup</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "mess" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/house.png" style="height:60px; width:50px;margin:15px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Mess</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "refrigerator" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/ref.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Refrigerator</b></p>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div> {% endcomment %}
+                                    {% comment %} <hr> {% endcomment %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="rate_outPut gall_price shadow">
+                                <p>Double Sharing</p>
+                                <h4>Rs {{ prop.double_room_expected_rent }}/- </h4>
+                                <a href="#owner_details_form_modal" class="btn btn_owner" onclick="getPropertyUserId('{{ prop.user.id }}', '{{ prop.uuid }}')" data-bs-toggle="modal">contact
+                                    owner</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if prop.triple_room %}
+                    <div class="row g-5 gall_top my-3">
+                        <div class="col-lg-9 shadow">
+                            <div class="row pg_dtls">
+                                <div class="my-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h3><b>Triple Sharing</b></h3>
+                                        </div>
+                                        <div class="col-lg-6 price_room">
+                                            <h4 class="">PG Occupancy</h4>
+                                            <h4>Rs {{ prop.triple_room_expected_rent }}/-</h4>
+                                        </div>
+                                        <div class="col-lg-6 price_room">
+                                            <h4 class="">PG Diposit</h4>
+                                            <h4 class="prce">Rs {{ prop.triple_room_deposit_rent }}/-</h4>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="aminities">
+                                        <h4 class="text-capitalize">Amenities</h4>
+                                        <div class="d-flex room_icon">
+                                            {% if "Bedding" in prop.triple_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/bed.png" style="height:70px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Bed</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Attached Bathroom" in prop.triple_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/bath.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Attach bathroom</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "TV" in prop.triple_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/tele.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>TV</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "AC" in prop.triple_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/air.png" style="height:60px; width:50px;margin:15px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>AC</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Cupboard" in prop.triple_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/cupboard.png" style="height:60px; width:50px;margin:15px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Cupboard</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Geyser" in prop.triple_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/gey.png" style="height:60px; width:60px;margin:13px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Geyser</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% comment %} <div class="col-1 icons_for_room other">
+                                                <a href="" data-bs-toggle="collapse" data-bs-target="#otherIcon_collaps_triple">more</a>
+                                            </div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                    {% comment %} <div class="collapse" id="otherIcon_collaps_triple">
+                                        <h4 class="text-capitalize">common amenities</h4>
+                                        <div class="d-flex room_icon">
+                                            {% if "wifi" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/wifi.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>wi-Fi</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "lift" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/Lift.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Lift</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "power backup" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/power.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Power Backup</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "mess" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/house.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Mess</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "refrigerator" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/ref.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Refrigerator</b></p>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div> {% endcomment %}
+                                    {% comment %} <hr> {% endcomment %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="rate_outPut gall_price shadow">
+                                <p>Triple Sharing</p>
+                                <h4>Rs {{ prop.triple_room_expected_rent }}/- </h4>
+                                <a href="#owner_details_form_modal" class="btn btn_owner" onclick="getPropertyUserId('{{ prop.user.id }}', '{{ prop.uuid }}')" data-bs-toggle="modal">contact
+                                    owner</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if prop.four_room %}
+                    <div class="row g-5 gall_top my-3">
+                        <div class="col-lg-9 shadow">
+                            <div class="row pg_dtls">
+                                <div class="my-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h3><b>Four Sharing</b></h3>
+                                        </div>
+                                        <div class="col-lg-6 price_room">
+                                            <h4 class="">PG Occupancy</h4>
+                                            <h4>Rs {{ prop.four_room_expected_rent }}/-</h4>
+                                        </div>
+                                        <div class="col-lg-6 price_room">
+                                            <h4 class="">PG Diposit</h4>
+                                            <h4 class="prce">Rs {{ prop.four_room_deposit_rent }}/-</h4>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="aminities">
+                                        <h4 class="text-capitalize">Amenities</h4>
+                                        <div class="d-flex room_icon">
+                                            {% if "Bedding" in prop.four_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/bed.png"  style="height:70px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Bed</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Attached Bathroom" in prop.four_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/bath.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Attach bathroom</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "TV" in prop.four_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/tele.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>TV</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "AC" in prop.four_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/air.png" style="height:60px; width:50px;margin:15px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>AC</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Cupboard" in prop.four_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/cupboard.png" style="height:60px; width:50px;margin:15px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Cupboard</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "Geyser" in prop.four_room_extra_features %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/gey.png" style="height:60px; width:60px;margin:13px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Geyser</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% comment %} <div class="col-1 icons_for_room other">
+                                                <a href="" data-bs-toggle="collapse" data-bs-target="#otherIcon_collaps_four">more</a>
+                                            </div> {% endcomment %}
+                                        </div>
+                                    </div>
+                                    {% comment %} <div class="collapse" id="otherIcon_collaps_four">
+                                        <h4 class="text-capitalize">common amenities</h4>
+                                         <div class="d-flex room_icon">
+                                            {% if "wifi" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/wifi.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>wi-Fi</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "lift" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/Lift.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Lift</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "power backup" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/power.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Power Backup</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "mess" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/house.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Mess</b></p>
+                                                </div>
+                                            {% endif %}
+                                            {% if "refrigerator" in prop.pg_amenities %}
+                                                <div class="col-1 icons_for_room">
+                                                    <img src="/static/images/ref.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                                    <p class="text-center text-capitalize"><b>Refrigerator</b></p>
+                                                </div>
+                                            {% endif %}
+                                        </div> 
+                                    </div> {% endcomment %}
+                                     {% comment %} <hr>  {% endcomment %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="rate_outPut gall_price shadow">
+                                <p>Four Sharing</p>
+                                <h4>Rs {{ prop.four_room_expected_rent }}/- </h4>
+                                <a href="#owner_details_form_modal" class="btn btn_owner" onclick="getPropertyUserId('{{ prop.user.id }}', '{{ prop.uuid }}')" data-bs-toggle="modal">contact
+                                    owner</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+
+                <div class="row g-5 gall_top">
+                    <div class="col-lg-9 shadow">
+                        <div class="row pg_dtls room_inner">
+                            <div class="pg_name">
+                                <h2>Common Amenities</h2>
+                                <hr>
+                                {% comment %} <p>{{ prop.food_included_details }}</p> {% endcomment %}
+                            </div>
+                            <div class="d-flex room_icon">
+                                {% if "wifi" in prop.pg_amenities %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/wifi.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>wi-Fi</b></p>
+                                    </div>
+                                {% endif %}
+                                {% if "lift" in prop.pg_amenities %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/Lift.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>Lift</b></p>
+                                    </div>
+                                {% endif %}
+                                {% if "power backup" in prop.pg_amenities %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/power.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>Power Backup</b></p>
+                                    </div>
+                                {% endif %}
+                                {% if "mess" in prop.pg_amenities %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/house.png" style="height:60px; width:70px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>Mess</b></p>
+                                    </div>
+                                {% endif %}
+                                {% if "refrigerator" in prop.pg_amenities %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/ref.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>Refrigerator</b></p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="row g-5 gall_top">
+                    {% if prop.near_by_railway_station or prop.near_by_bus_stand or near_by_market or near_by_hospital or near_by_bank or near_by_airport %}
+                        <div class="col-lg-3">
+                            <div class="rate_outPut gall_price shadow">
+                                <h1 class="text-center text-light text-capitalize bg-dark py-2">near by you</h1>
+                                {% if prop.near_by_railway_station %}
+                                    <div class="col-12 d-flex bg-light mt-2 other_part">
+                                        <p class="text-dark text-left">rail station</p>
+                                        <p class="text-dark">{{ prop.near_by_railway_station }}</p>
+                                    </div>
+                                {% endif %}
+                                {% if prop.near_by_bus_stand %}
+                                    <div class="col-12 d-flex bg-light mt-2 other_part">
+                                        <p class="text-dark  text-left">bus stop</p>
+                                        <p class="text-dark">{{ prop.near_by_bus_stand }}</p>
+                                    </div>
+                                {% endif %}
+                                {% if prop.near_by_market %}
+                                    <div class="col-12 d-flex bg-light mt-2 other_part">
+                                        <p class="text-dark  text-left">market</p>
+                                        <p class="text-dark">{{ prop.near_by_market }}</p>
+                                    </div>
+                                {% endif %}
+                                {% if prop.near_by_hospital %}
+                                    <div class="col-12 d-flex bg-light mt-2 other_part">
+                                        <p class="text-dark  text-left">hospital</p>
+                                        <p class="text-dark">{{ prop.near_by_hospital }}</p>
+                                    </div>
+                                {% endif %}
+                                {% if prop.near_by_bank %}
+                                    <div class="col-12 d-flex bg-light mt-2 other_part">
+                                        <p class="text-dark  text-left">bank</p>
+                                        <p class="text-dark">{{ prop.near_by_bank }}</p>
+                                    </div>
+                                {% endif %}
+                                {% if prop.near_by_airport %}
+                                    <div class="col-12 d-flex bg-light mt-2 other_part">
+                                        <p class="text-dark  text-left">airport</p>
+                                        <p class="text-dark">{{ prop.near_by_airport }}</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                {% comment %} food Section {% endcomment %}
+                <div class="row g-5 gall_top">
+                    <div class="col-lg-9 shadow">
+                        <div class="row pg_dtls room_inner">
+                            <div class="pg_name">
+                                <h2>Food</h2>
+                                <hr>
+                                {% comment %} <p>{{ prop.food_included_details }}</p> {% endcomment %}
+                            </div>
+                            
+                            <div class="d-flex room_icon">
+                                {% if "Breakfast" in prop.food_included_details %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/breakfast.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>Breakfast</b></p>
+                                    </div>
+                                {% endif %}
+                                {% if "Lunch" in prop.food_included_details %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/meal.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>Lunch</b></p>
+                                    </div>
+                                {% endif %}
+                                {% if "Dinner" in prop.food_included_details %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/dinner.png" style="height:60px; width:50px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>Dinner</b></p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row g-5 gall_top">
+                    <div class="col-lg-9 shadow">
+                        <div class="row pg_dtls room_inner">
+                            <div class="pg_name">
+                                <h2>pg rules</h2>
+                                <p>{{ prop.pg_other_rules }}</p>
+                            </div>
+                            <hr>
+                            <div class="d-flex room_icon">
+                                {% if "No Drinking" in prop.pg_other_details %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/cheers.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>no drinks</b></p>
+                                    </div>
+                                {% endif %}
+                                {% if "No Smoking" in prop.pg_other_details %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/smo.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>no smoking</b></p>
+                                    </div>
+                                {% endif %}
+                                {% if "No Guardian" in prop.pg_other_details %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/parents.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>no guardian</b></p>
+                                    </div>
+                                {% endif %}
+                                {% if "No Girls Entry" in prop.pg_other_details %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/girl.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>no girls</b></p>
+                                    </div>
+                                {% endif %}
+                                {% if "No Non-Veg" in prop.pg_other_details %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/non.png" style="height:60px; width:60px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>no non-veg</b></p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} {% if prop.verified %}
+                        <div class="col-lg-3">
+                            <div class="rate_outPut gall_price shadow">
+                                <h1 class="text-center text-light text-capitalize bg-dark py-2">verified</h1>
+                                <div class="col-12 d-flex bg-light mt-2 other_part">
+                                    <img src="/static/images/VERIFIED-02.png" alt="" class="img-fluid">
+                                </div>
+                                <div class="col-12 d-flex bg-light mt-2 other_part">
+                                    <p class="text-dark  text-left">by</p>
+                                    <p class="text-dark">URS Rooms</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %} {% endcomment %}
+                </div>
+                <div class="row g-5 gall_top">
+                    <div class="col-lg-12 shadow p-4 position-relative">
+                        <div id="map" class="w-100"></div>
+                        <div id="navigateBtn" onclick="goToGoogleMap(parseFloat('{{ prop.latitude }}'), parseFloat('{{ prop.longitude }}'))" class="btn btn-primary btn-lg position-absolute rounded-pill">Navigate</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="owner_details_form_modal" aria-hidden="true"
+                    aria-labelledby="owner_details_form_modal" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header form_head">
+                                <div class="modal_text_part">
+                                    <div class="part_text">
+                                        <h5 class="modal-title" id="owner_details_form_modal">get owner detais</h5>
+                                        <p class="text-secondary">100% genuine owner zero brokage</p>
+                                    </div>
+                                    <div class="part_img">
+                                        <img src="/static/images/phone.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body form_owner_body">
+                                <div class="container">
+                                    <h3 class="heading">provide your details</h3>
+                                    <form action="/store-response" method="post"> {% csrf_token %}
+                                        <div class="mt-3">
+                                            <label for="name" class="form-label">your name</label>
+                                            <input type="text" name="name" placeholder="Enter Your Full Name" required class="form-control">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="email" class="form-label">your email</label>
+                                            <input type="email" name="email" placeholder="Enter Your Email" required class="form-control">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="mobile" class="form-label">your mobile</label>
+                                            <input type="phone" maxlength="10" minlength="10" name="phone" placeholder="Enter Your Mobile Number"
+                                                class="form-control" required>
+                                        </div>
+                                        <!-- <div class="form-check form-switch mt-3">
+                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
+                                                checked>
+                                            <label class="form-check-label" for="flexSwitchCheckChecked">get update on
+                                                whatsaap</label>
+                                        </div> -->
+                                        <div class="mt-3 d-flex">
+                                            <input type="hidden" name="user" id="propertyUser" value="">
+                                            <input type="hidden" name="prop" id="property" value="">
+                                            <input type="checkbox" class="form-check check_box" required>
+                                            <label for="" class="form-label check_label mx-2">Yes I agreed The Terms &
+                                                conditions</label>
+                                        </div>
+                                        <div class="mt-3">
+                                            <button type="submit" class="btn">get owner details</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function getPropertyUserId(id, uuid) {
+            document.getElementById("propertyUser").value = parseInt(id);
+            document.getElementById("property").value = uuid;
+        }
+
+        var mymap = L.map('map').setView([parseFloat("{{ prop.latitude }}"), parseFloat("{{ prop.longitude }}")], 16);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 20,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiYWxhbmthcjI3MTIiLCJhIjoiY2tsMG54NWRhMDg5YzJxbzRhMW8xcnM0cCJ9.ryiqXISFg1YXy4258NYcgQ'
+        }).addTo(mymap);
+        var marker = L.marker([parseFloat("{{ prop.latitude }}"), parseFloat("{{ prop.longitude }}")]).addTo(mymap);
+
+        const goToGoogleMap = (lat, long) => {
+            window.open(`https://www.google.com/maps/search/?api=1&query=${lat}+${long}`, '_blank');
+        }
+
+        {% comment %} popup {% endcomment %}
+
+        {% comment %} const images=[...document.querySelectorAll('{{prop.image_1.url}}')]
+        const images=[...document.querySelectorAll('.image')]
+
+        const popup = document.querySelector('.popup');
+        const closeBtn = document.querySelector('.close-btn');
+        const largeImage = document.querySelector('.large-image');
+        const imageIndex = document.querySelector('.index');
+        const leftArrow = document.querySelector('.left-arrow');
+        const rightArrow = document.querySelector('.right-arrow');
+
+        let index = 0;
+        images.forEach((item, prop.image_1.url) => {
+            item.addEventListener('click',() => {
+                popup.classList.toggle('active');
+                updateImage(prop.image_1.url);
+                popup.classList.toggle('active');
+            })
+
+        })
+
+        const updateImage = (prop.image_1.url) => {
+            let path = 'prop.image_1.url+1';
+            largeImage.src = path;
+            imageName.innerHTML = path;
+            imageIndex.innerHTML = '0${prop.image_1.url+1}';
+            index = prop.image_1.url;
+        }
+
+        closeBtn.addEventListener('click',() => {
+            popup.classList.toggle('active');
+        })
+
+        leftArrow.addEventListener('click', () => {
+            if (index > 0){
+                updateImage(index - 1);
+            }
+        })
+
+        rightArrow.addEventListener('click',() => {
+            if(index<images.length -1){
+                updateImage(index +1);
+            }
+        }) {% endcomment %}
+
+    </script>
+
+{% endblock body %}
+
+{% block js %}
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+{% endblock js %}
+
+
+
+
+
+

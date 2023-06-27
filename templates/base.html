@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta
+      name="description"
+      content="To facilitate its user to rent properties even on the go, URS ROOM has also come up with all mobile sites for users. Users can now search properties and contact the owner and they can also post property comma check their responses received on them and even contact the interested tenants instantly."
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta
+      name="keywords"
+      content="Ultimate Rental solution, URS, PG, HOMESTAYS, rentals"
+    />
+    <link rel="apple-touch-icon" href="/static/images/IMG-20220613-WA0014 1.png" />
+    <meta property="og:title" content="URS ROOM - Brokerage free Rental Property" />
+    <meta
+      property="og:description"
+      content="URS ROOM is a technology-driven Real Estate market player that offers advanced software solutions to solve up-to-date needs and challenges of real Estate Business, Brokers, Investors, Tenants and Landlords."
+    />
+    <meta
+      property="og:image"
+      content="https://ursroom.com/static/images/IMG-20220613-WA0014 1.png"
+    />
+    <meta property="og:url" content="https://ursroom.com/" />
+    <meta property="og:site_name" content="URS Rooms" />
+    <meta property="og:type" content="website" />
+    <link rel="shortcut icon" href="/static/images/IMG-20220613-WA0014 1.png" type="image/x-icon">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/v4-shims.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/f4558c4a81.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="text/javaScript" href="/static/js/ursroom.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css" integrity="sha512-giQeaPns4lQTBMRpOOHsYnGw1tGVzbAIHUyHRgn7+6FmiEgGGjaG0T2LZJmAPMzRCl+Cug0ItQ2xDZpTmEc+CQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <title>URS Room Home Page</title>
+    {% block css %}
+    {% endblock css %}
+    <style>
+        #toast-content {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 20000;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border: 1px solid #f00;
+            font-size: large;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% block body %}
+    {% endblock body %}
+
+    {% include "footer.html" %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/static/js/ursroom.js"></script>
+    {% block js %}
+    {% endblock js %}
+
+    <div id="toast-content"></div>
+
+    <script>
+        {% if messages %}
+            document.getElementById('toast-content').style.display = 'block';
+            {% for message in messages %}
+                document.getElementById('toast-content').innerHTML = '<strong>{{ message }}</strong>';
+                setTimeout(function() {
+                    document.getElementById('toast-content').style.display = 'none';
+                }, 3000);
+            {% endfor %}
+        {% endif %}
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

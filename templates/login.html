@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% include "header.html" with post_property="false" %}
+    <section class="owner_profile">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-6 order-2 order-md-1">
+                    
+                    <div class="row mt-4 px-2">
+                        <div class="col-5">
+                            <img src="/static/images/12.png" alt="" class="img-fluid rounded-3" 
+                            style ="margin-top: -40px;">
+                        </div>
+                        <div class="col-7">
+                            <div class="fs-3 mb-3 fw-bolder text-red">Verified Lead Management</div>
+                            <div class="fs-5">Tracking your sales process from start to finish to ensure that each lead is handled correctly. For example, if a customer requests for a house, you should call to give them information about your property.</div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-5">
+                            <img src="/static/images/11.png" alt="" class="img-fluid rounded-3" style="width: 200px; margin-left: 20px; ">
+                        </div>
+                        <div class="col-7">
+                            <div class="fs-3 mb-3 fw-bolder text-red">Any time you can edit your property details</div>
+                            <div class="fs-5">This will make sure that you are keeping everything up to date, which will make sure that your property is listed in the best way possible. The last thing that you want to happen when you are trying to sell your property is for people to go to it, but not be interested in buying it. The best way to make sure that this doesn’t happen is by keeping your details updated.</div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-5">
+                            <img src="/static/images/14.png" alt="" class="img-fluid rounded-3">
+                        </div>
+                        <div class="col-7">
+                            <div class="fs-3 mb-3 fw-bolder text-red" style="margin-top: 40px;">Manage Subscription Package for faster Tenants</div>
+                            <div class="fs-5">Renting out a property is a business that requires a lot of time and effort. You can achieve this by opting for a subscription package. This is a great way to get the tenants that you want and to maintain a high occupancy level in your properties. You must choose the right package for your needs.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 pt-2 order-1 order-md-2" style="margin-top: 10px; padding: 40px;">
+                    <h1 class="px-2 px-md-5 pb-5">Login</h1>
+                    <div class="row px-2 px-md-5">
+                        <form action="/ursroom-room-user-login" method="post" class="owner_log"> {% csrf_token %}
+                            <div class="col-sm-12 mb-3">
+                                <label for="username" class="form-label">username</label>
+                                <input type="text" class="form-control form-control-lg" id="username" name="username" required placeholder="Enter your UserName">
+                            </div>
+                            <div class="col-sm-12 mb-3">
+                                <label for="password" class="form-label">password</label>
+                                <input type="password" class="form-control form-control-lg" id="password" name="password" required placeholder="Enter your Password" >
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-danger">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row mt-5 px-2 px-md-5">
+                        <div class="col-12">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-1 d-flex justify-content-center align-items-center">
+                                    <span class="fs-1"><i class="fa fa-edit text-red"></i></span>
+                                </div>
+                                <div class="col-11">
+                                    <div class="fs-4">
+                                        24 X 7 Support
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row d-flex align-items-center">
+                                <div class="col-1 d-flex justify-content-center align-items-center">
+                                    <span class="fs-1"><i class="fas fa-check-circle text-red"></i></span>
+                                </div>
+                                <div class="col-11">
+                                    <div class="fs-4">
+                                        Zero Brokerage
+                                    </div>
+                                </div>
+                            </div>
+                            {% comment %} <div class="row d-flex align-items-center">
+                                <div class="col-1 d-flex justify-content-center align-items-center">
+                                    <span class="fs-1"><i class="fas fa-box text-red"></i></span>
+                                </div>
+                                <div class="col-11">
+                                    <div class="fs-4">
+                                        Choose subscription package according to needs
+                                    </div>
+                                </div>
+                            </div> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block body %}
+{% include "header.html" with post_property="false" %}
+<div class="container" >
+    <div class="p-4 m-5 ">
+        <div class="col-lg-5 mx-auto border rounded pt-4 py-5 px-5 shadow-lg">
+            <h3 class="alert alert-light " style="color: black;">Create An Account</h3>
+            <form action="register" method="POST"> 
+                {% csrf_token %}
+                {% comment %} {% if error %}            
+                <center><h4 style="color:red;">{{error}}</h4></center>         
+                {% endif %} {% endcomment %}
+                {% if error %}
+                    <div class="alert alert-danger" role="alert" style="font-size:15px">
+                    <b>{{error}}</b>
+                    </div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="">First Name</label>
+                    <input type="text" name="fname" id="" value="{{data.fname}}" class="form-control form-control-sm" placeholder="abc" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Last Name</label>
+                    <input type="text" name="lname" id="" value="{{data.lname}}" class="form-control form-control-sm" placeholder="abc" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input type="email" name="email" id="" value="{{data.email}}" class="form-control form-control-sm" placeholder="abc@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Contact</label>
+                    <input type="text" name="phone" id="" value="{{data.phone}}" class="form-control form-control-sm" placeholder="123465789" required>
+                  </div>
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" name="password" id="" class="form-control form-control-sm" placeholder="******">
+                </div>
+                <div class="form-group">
+                    <label for="">Confirm Password</label>
+                    <input type="password" name="cpassword" id="" class="form-control form-control-sm" placeholder="******">
+                </div>
+                <div class="btn-grup">
+                    <h1 class="mb-3">select propery ad type</h1>
+                    <!-- <input type="radio" class="btn-check" name="property_type" value="rent" id="option1" autocomplete="off" checked>
+                    <label class="btn btn-primary  " for="option1">rent</label> -->
+                    <input  type="radio"  name="property_type" value="pg/hostel" id="option2" autocomplete="off" checked>
+                    <label class="fs-6" for="option2">pg/hostels</label>
+                    <input type="radio"  name="property_type" value="flatmates" id="option3" autocomplete="off">
+                    <label  class="fs-6" for="option3">flatmates</label>
+                  </div>
+                
+                <div class="form-group">
+                    <input class="btn btn-sm btn-danger" type="submit" value="Create An Account">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,2729 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 7rem;
+  scroll-behavior: smooth;
+  /* transition: .5s all ease-in; */
+}
+
+html::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: rgb(255, 0, 0);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #fff;
+  height: 0.2rem;
+  border-radius: 2rem;
+}
+
+ul,
+li,
+ol {
+  padding: 0;
+  margin: 0;
+}
+
+.btn-danger:focus {
+  box-shadow: none;
+}
+
+/* Basic Things End */
+
+/* Body Part start */
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2% 1.5rem;
+  height: 8rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  box-shadow: 0.1rem 0.2rem 0.5rem rgb(0, 0, 0, 15%);
+  z-index: 1000;
+  background: #fff;
+}
+
+header .property_part ul li {
+  list-style: none;
+  font-size: 2rem;
+  background: red;
+  padding: 0.8rem;
+  border-radius: 2rem;
+  margin-left: 55rem;
+  width: 30rem;
+}
+
+header .property_part ul li a {
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+
+header .property_part ul li span {
+  margin-left: 1.5rem;
+  background: rgb(255, 204, 0);
+  padding: 0 1rem;
+  border-radius: 2rem;
+}
+
+header .property_part ul li i {
+  color: rgb(31, 31, 31);
+  padding: 0.5rem;
+  font-weight: 800;
+}
+
+header .manu_bar ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .manu_bar ul li {
+  padding-left: 1.5rem;
+}
+
+header .manu_bar .fas {
+  font-size: 2rem;
+  color: rgb(0, 0, 0, 55%);
+}
+
+header .manu_bar a {
+  color: rgb(0, 0, 0, 55%);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.sidepanel {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background-color: rgb(255, 255, 255);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 0 0.2rem 0.5rem rgb(0, 0, 0, 50%);
+}
+
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #595959;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidepanel a:hover {
+  color: #ffffff;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 36px;
+  color: rgb(27, 24, 24);
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  color: rgb(120, 120, 120);
+  padding: 10px 15px;
+  border: none;
+}
+
+.sidepanel .top_part {
+  background: red;
+  display: flex;
+  height: 17rem;
+  position: relative;
+  top: -6rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidepanel .top_part h2 {
+  color: #fff;
+  text-align: center;
+}
+
+.sidepanel .top_part .fas {
+  color: #fff;
+  font-size: 7rem;
+  margin-top: 3rem;
+}
+
+.menuLink a {
+  border-bottom: 1px solid;
+  color: rgb(0, 0, 0, 55%);
+}
+
+.menuLink a:hover {
+  color: rgb(255, 0, 0);
+}
+
+/* Header End */
+
+/* tab Nav Part Start */
+.tabsDivs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tabsDivs ul li:nth-child(1) a {
+  border-top-left-radius: 15px;
+}
+
+.tabsDivs ul li:nth-child(2) a {
+  border-top-right-radius: 15px;
+}
+
+.tabsDivs .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  font-size: 2.5rem;
+  color: rgb(255, 9, 9);
+  border: none;
+  border-bottom: 0.2rem solid red !important;
+  border: 0.1rem solid rgb(0, 0, 0, 26%);
+}
+
+.tabsDivs .nav-link {
+  font-size: 2.5rem;
+  text-transform: capitalize;
+  color: rgb(0, 0, 0, 26%);
+  background: #f5f5f5;
+  transition: 0.5s;
+}
+
+.search_part_content {
+  width: 100%;
+  justify-content: space-between;
+  border: 0.1rem solid rgb(0, 0, 0, 26%);
+  position: relative;
+  border-radius: 50px;
+  /* z-index: -1; */
+}
+
+.tab-content .collapse {
+  overflow-y: auto;
+  height: 15rem;
+  width: 15rem;
+  box-shadow: 0.1rem 0.2rem 0.5rem rgb(0, 0, 0, 55%);
+  padding: 0.5rem;
+  position: absolute;
+  top: 107%;
+  background: #fff;
+}
+
+.tab-content .collapse h2 {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  padding: 0.5rem;
+  color: #949494;
+}
+
+.search_part_content .placa_box {
+  width: 15%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  border-right: 0.1rem solid rgb(0, 0, 0, 26%);
+  color: #ababab;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.search_part_content .placa_box .form-select {
+  width: 50rem;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.search_part_content .placa_box .form-select:focus {
+  box-shadow: none;
+}
+
+.tab-content .col-2 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 1.5rem;
+  width: 9rem;
+  margin-left: 2rem;
+}
+
+.tab-content .col-2 .searchImagePart h3 {
+  text-align: center;
+  font-size: 1.2rem;
+  padding-top: 0.5rem;
+  color: #595959;
+  text-transform: capitalize;
+}
+
+.search_part_content form {
+  width: 100%;
+  display: flex;
+}
+
+.search_part_content .searc_box {
+  width: 85%;
+}
+
+#pageSearchFilter::placeholder {
+  color: #ababab;
+  font-size: 1.5rem;
+}
+
+.search_part_content form .form-control:focus {
+  box-shadow: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.search_part_content .btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: red;
+  font-size: 1.5rem;
+  color: #fff;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.search_part_content .btn:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.search_part_content .btn .fas {
+  padding-right: 1rem;
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+.sec_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.2rem solid #ababab;
+  border-radius: 2rem;
+  box-shadow: 0.2rem 0.2rem 0.5rem rgb(0, 0, 0, 26%);
+  width: 28%;
+  height: auto;
+  margin: 1.2rem;
+  overflow: hidden;
+}
+
+.sec_info .info_part h3 {
+  margin-bottom: 3rem;
+  color: #595959;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* pg informatin part */
+
+.pg_for_looking {
+  margin-top: 10rem;
+}
+
+.pg_for_looking .lodge_bog {
+  overflow: hidden;
+  border-radius: 2rem;
+  position: relative;
+}
+
+.pg_for_looking .looking_for h3 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.pg_for_looking .lodge_bog .txt_part {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0%;
+  height: 4rem;
+  background: rgb(0, 0, 0, 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  transition: 1s;
+}
+
+.pg_for_looking .lodge_bog:hover .txt_part {
+  transition: 1s;
+  width: 100%;
+}
+
+.pg_for_looking .lodge_bog .txt_part h3 {
+  color: #fff;
+  text-transform: capitalize;
+  opacity: 0;
+}
+
+.pg_for_looking .lodge_bog:hover h3 {
+  opacity: 1;
+}
+
+/* pg faqs part */
+.urs_faqPart {
+  margin-top: 8rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+
+.urs_faqPart .accordion-button {
+  border: none;
+  box-shadow: none;
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.urs_faqPart .accordion-button:not(.collapsed) {
+  color: red;
+  background-color: #fff;
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.urs_faqPart .accordion-button:focus {
+  border: #ababab solid 0.1rem;
+  box-shadow: none;
+}
+
+.urs_faqPart .accordion-button::after {
+  background-image: url(/static/images/plus.png);
+  background-position: center;
+}
+
+.urs_faqPart .accordion-button:not(.collapsed)::after {
+  background-image: url(/static/images/minus-red.png);
+  transform: rotate(0);
+}
+
+.urs_faqPart .accordion-body {
+  border: none;
+  font-size: 1.5rem;
+}
+
+.urs_faqPart .accordion-body h5 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.urs_faqPart .accordion-body h5 a {
+  text-transform: lowercase;
+}
+
+.urs_faqPart .accordion-item {
+  border: 0.2rem solid #ababab;
+  margin-top: 1.5rem;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+}
+
+.accordion-flush .accordion-item:first-child {
+  border-top: 0.2rem solid #ababab;
+}
+
+.accordion-flush .accordion-item:last-child {
+  border-bottom: 0.2rem solid #ababab;
+}
+
+/* Faq End */
+
+/* Why Choose Start */
+
+.why_choose {
+  margin-top: 8rem;
+}
+
+.why_choose .long_line {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.why_choose .first_box,
+.why_choose .secnd_box,
+.why_choose .third_box,
+.why_choose .fourth_box {
+  width: 20rem;
+  height: 20rem;
+  border: 0.1rem solid #949494;
+  border-radius: 0.5rem;
+  box-shadow: 0.2rem 0.4rem 0.5rem rgb(0, 0, 0, 26%);
+  padding: 1.5rem;
+  background: #fff;
+}
+
+input[type="checkbox"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.why_choose .first_box {
+  animation: wave 5s linear infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(1rem);
+  }
+
+  50% {
+    transform: translate(-1rem);
+  }
+
+  75% {
+    transform: translate(1rem);
+  }
+
+  100% {
+    transform: translate(-1rem);
+  }
+}
+
+.why_choose .secnd_box {
+  animation: wave 5s linear infinite;
+}
+
+.why_choose .third_box {
+  animation: wave 5s linear infinite;
+}
+
+.why_choose .fourth_box {
+  animation: wave 5s linear infinite;
+}
+
+footer {
+  background: #021c30;
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 0.1rem #949494 dashed;
+}
+
+.foot_img p {
+  font-size: 1.2rem;
+  width: 80%;
+  color: #ababab;
+}
+
+.soc_link p {
+  font-size: 1.2rem;
+  color: #ababab;
+}
+
+footer h1 {
+  color: rgb(213, 213, 213);
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  position: relative;
+}
+
+footer h1::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 10%;
+  height: 0.2rem;
+  border-bottom: 0.2rem solid #fff;
+}
+
+footer .main_link {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+footer .main_link li {
+  padding-top: 0.2rem;
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
+
+footer .main_link a {
+  text-decoration: none;
+  color: #ababab;
+}
+
+footer .main_link a:hover {
+  color: #fff;
+  border-bottom: 0.1rem solid #fff;
+}
+
+footer .social_link {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex: start;
+}
+
+footer .social_link li {
+  font-size: 2.8rem;
+  width: 15%;
+  padding-top: 1.5rem;
+}
+
+footer .social_link li a {
+  text-decoration: none;
+  color: #ababab;
+}
+
+footer .social_link li a:hover {
+  color: #fff;
+}
+
+.copy_right {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.5rem;
+  background: #021c30;
+  height: 5rem;
+  margin-top: 0rem;
+  flex-direction: column;
+}
+
+.copy_right .lead {
+  text-transform: capitalize;
+  font-size: 1.8rem;
+  padding-top: 0.5rem;
+}
+
+.copy_right .lead span {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgb(255, 0, 0);
+}
+
+/* property section start */
+
+.property_list {
+  margin-top: 10rem;
+}
+
+.info_property {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 15rem;
+}
+
+.info_property ul {
+  list-style: none;
+}
+
+.info_property ul li {
+  font-size: 1.8rem;
+  position: relative;
+}
+
+.info_property ul li::before {
+  content: "	\2713";
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background: green;
+  border-radius: 50%;
+  left: -3rem;
+  top: 20%;
+}
+
+.info_property .connu_btn {
+  position: absolute;
+  top: 120%;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.info_property .connu_btn .btn {
+  background: red !important;
+  font-size: 2rem;
+  border-radius: 50px;
+}
+
+/* personal details */
+
+.pr_details {
+  margin-top: 8rem;
+}
+
+.pr_details .presonal {
+  width: 80%;
+  margin-left: 10rem;
+  text-align: center;
+}
+
+.pr_details {
+  font-size: 1.5rem;
+}
+
+.pr_details .form-control {
+  font-size: 1.7rem;
+  color: #ababab;
+}
+
+.pr_details .presonal .text-capitalize {
+  color: #949494;
+  text-transform: capitalize;
+}
+
+.pr_details .presonal .btn-grup .mb-3 {
+  color: #949494;
+  font-size: 1.8rem;
+  margin-bottom: 2rem !important;
+  text-transform: capitalize;
+}
+
+.pr_details .form-floating .form-select {
+  height: 5rem;
+  font-size: 1.5rem;
+}
+
+.pr_details .presonal .form-select:focus,
+.pr_details .presonal .form-control:focus {
+  box-shadow: none;
+}
+
+.pr_details .presonal .form-control:focus ::placeholder {
+  transform: translateY(1.5rem);
+}
+
+.pr_details .presonal .btn-grup {
+  text-align: center;
+  margin-top: 2rem;
+  border: 0.1rem solid #d9d9d9;
+  padding: 3rem;
+  margin-bottom: 2rem;
+}
+
+.pr_details .presonal .btn-grup label {
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+
+.pr_details .presonal .btn-danger {
+  background: red !important;
+  font-size: 1.8rem;
+  margin-top: 0.8rem;
+  text-transform: capitalize;
+  border-radius: 50px;
+}
+
+.pr_details .presonal .btn-grup .btn-primary {
+  border: 0.1rem solid red !important;
+  background: transparent;
+  color: red;
+  border-radius: 50px;
+}
+
+.pr_details .presonal .btn-grup .btn-check:checked + .btn-primary {
+  background: red !important;
+  color: #fff;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 50px;
+}
+
+/* ******** Room Details********** */
+
+.room_details {
+  margin-top: 8rem;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.room_details .sub-head {
+  font-size: 1.5rem;
+  color: #807f7f;
+  text-transform: capitalize;
+}
+
+.room_details .heading {
+  text-transform: capitalize;
+  color: #807f7f;
+}
+
+.room_details .subheadP {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  margin: 1rem 0;
+}
+
+.roomDetails .btn-danger {
+  font-size: 1.8rem;
+  background: red;
+  margin-top: 2.5rem;
+  text-transform: capitalize;
+  border-radius: 50px;
+}
+
+.room_details .roomDetails .form-check {
+  margin: auto;
+  height: 2rem;
+  width: 2rem;
+  margin-top: 1.5rem;
+  border: 0.1rem solid red;
+  cursor: pointer;
+}
+
+.first_room_info .form-group {
+  text-align: left;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.room_details .roomDetails .form-check:focus {
+  box-shadow: none;
+}
+
+.chekbox-group .border {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border: none !important;
+}
+
+.chekbox-group .border span {
+  margin-left: 0.8rem;
+}
+
+.room_info_fstCol {
+  position: relative;
+  overflow: hidden;
+}
+
+.room_info_fstCol .verified_room {
+  position: absolute;
+  top: 6%;
+  left: -6%;
+  background: rgb(2, 208, 2);
+  width: 25%;
+  z-index: 1;
+  transform: rotate(-45deg);
+  box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.room_info_fstCol .verified_room h4 {
+  text-align: center;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.imag_outPut .overlay {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  width: 96.5%;
+  height: 100%;
+}
+
+/*********************** Location Details********************** */
+
+.location_details {
+  margin-top: 8rem;
+}
+
+.location_details .heading {
+  text-align: center;
+  text-transform: capitalize;
+  color: #807f7f;
+}
+
+.location_details .shadow {
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-radius: 0.8rem;
+}
+
+.location_details .shadow h3 {
+  font-size: 1.5rem !important;
+  color: #807f7f;
+}
+
+.location_details .shadow .form-label,
+.location_details .shadow .form-control {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  margin: 0.8rem 0;
+}
+
+.location_details .shadow .form-control:focus,
+.location_details .shadow .form-selec:focus {
+  box-shadow: none;
+}
+
+.location_details .shadow .form-control {
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+.location_details .shadow .form-select {
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+.location_details .shadow .form-check-input {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 1rem;
+}
+
+.location_details .shadow .form-check-label {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  margin-top: 1rem;
+}
+
+iframe {
+  width: 100%;
+  height: 35rem;
+}
+
+.location_details .top_input .form-control {
+  padding: 1.2rem;
+  font-size: 1.5rem;
+}
+
+.location_details .top_input .form-control:focus {
+  box-shadow: none;
+}
+
+.location_details .top_input .form-label {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.location_details .top_input .form-select {
+  font-size: 1.5rem;
+  height: 5rem;
+}
+
+.location_details .top_input .form-select:focus {
+  box-shadow: none;
+}
+
+/****************** congratulations ************************/
+
+.cong_btn .btn-danger {
+  background: red;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  border-radius: 50px;
+}
+
+.congrats .para {
+  font-size: 1.5rem;
+  color: #ababab;
+}
+
+.congrats .heading {
+  margin: 1.5rem 0;
+}
+
+/* User Account */
+
+.owner_profile .heading {
+  color: #949494;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.owner_profile .owner_log .form-label {
+  font-size: 1.5rem;
+  color: #949494;
+  text-transform: capitalize;
+}
+
+.owner_profile .owner_log .form-control {
+  padding: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.owner_profile .owner_log .btn-danger {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  background: red;
+  margin-top: 1.5rem;
+}
+
+.owner_profile .owner_log.notice {
+  flex-direction: row;
+}
+
+.owner_profile .notice p {
+  font-size: 1.4rem;
+  color: #807f7f;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.owner_profile .notice p span {
+  color: #595959;
+  font-size: 1.5rem;
+}
+
+/************************* User Profile *************************/
+
+.user_profile .btn-danger {
+  padding: 1rem 2.5rem;
+  margin: 0.5rem;
+  background: transparent;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  text-decoration: none;
+  border: 0.1rem solid red;
+  color: red;
+  border-radius: 50px;
+}
+
+.user_profile .btn-danger:hover {
+  background: red;
+  color: #fff;
+}
+
+.user_profile .caption-top caption {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #949494;
+}
+
+.user_profile .caption-top thead {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.user_profile table thead tr {
+  background: red !important;
+  color: #fff;
+  text-align: center;
+  border: 0.1rem solid #fff;
+}
+
+.user_profile table tbody th {
+  background: red !important;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.user_profile table tbody td {
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 1.5rem;
+  border: 0.1rem solid #fff;
+  text-align: center;
+}
+
+.mng_proprty {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.mng_proprty .para {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.mng_proprty .heading {
+  text-align: left;
+}
+
+.owner_profile .offer {
+  color: #807f7f;
+  text-transform: capitalize;
+}
+
+/********************** Subscription Pacakge **********************/
+
+.subscription_package ul {
+  list-style: none;
+  text-align: center;
+}
+
+.suscp_box {
+  position: relative;
+  transition: 0.8s ease;
+  overflow: hidden;
+}
+
+.suscp_box .recommnd {
+  width: 11rem;
+  height: 2rem;
+  background: yellow;
+  z-index: 10001;
+  text-align: center;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: -2.5rem;
+  top: 2rem;
+  padding: 0 1.5rem;
+}
+
+.suscp_box .recommnd p {
+  text-transform: capitalize;
+  font-size: 1rem;
+  position: absolute;
+  top: 0.2rem;
+  left: 1.9rem;
+  font-weight: 600;
+}
+
+.suscp_box:hover {
+  transform: scale(1.05);
+}
+
+.subscription_package ul li a {
+  background: green;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  cursor: text;
+}
+
+.suscp_box .caption_box {
+  background: #f90202;
+  border: 0.3rem solid #ff0000;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: 0.8s ease all;
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+  z-index: -1;
+}
+
+.suscp_box .caption_box::after {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background: #ff0000;
+  border-top: 0.1rem solid #ff0000;
+  border-left: 0.1rem solid #ff0000;
+  transform: rotate(45deg);
+  bottom: -8%;
+  left: 45%;
+  z-index: -1;
+  transition: 0.8s ease all;
+}
+
+.suscp_box .caption_box:hover {
+  background: rgb(27, 162, 0);
+  border: 0.3rem solid rgb(27, 162, 0);
+  transform: scale(1);
+  transition: 0.8s ease all;
+}
+
+.suscp_box .caption_box:hover::after {
+  background: rgb(27, 162, 0);
+  border: none;
+}
+
+.suscp_box .caption_box h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-shadow: 0.1rem.2rem 0.2rem rgb(0 0 0 / 50%);
+  color: #fff;
+}
+
+.suscp_box .caption_box h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.suscp_box .caption_box p {
+  font-size: 1.9rem;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.suscp_box .caption_box p span {
+  text-decoration: line-through;
+  font-weight: 600;
+  padding-left: 0.2rem;
+}
+
+.suscp_box .caption_box .btn {
+  background: #fff;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 5rem;
+  color: #807f7f;
+  box-shadow: 0.2rem 0.3rem 0.5rem rgb(0 0 0 / 13%);
+  margin-bottom: 0.5rem;
+}
+
+.subscription_package .caption_box:hover h1 {
+  color: #fff;
+}
+
+.subscription_package .caption_box:hover h3 {
+  color: #fff;
+}
+
+.subscription_package .caption_box:hover p {
+  color: #fff;
+}
+
+.subscription_package .caption_box:hover p span {
+  color: #fff;
+}
+
+.subscription_package .caption_box:hover .btn {
+  border: 0.2rem solid #ababab;
+  color: red;
+}
+
+.subscription_package .details_box h4 {
+  text-transform: capitalize;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.suscp_box .details_box span {
+  font-size: 1.5rem;
+  color: rgb(38, 191, 4);
+  padding: 0.8rem;
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 800;
+}
+
+.suscp_box .details_box span .fa-solid {
+  font-size: 2rem;
+}
+
+.suscp_box .details_box span .fa-check {
+  color: rgb(0, 200, 0);
+}
+
+.suscp_box .details_box span .fa-xmark {
+  color: red;
+  font-weight: 900;
+}
+
+/********************* Room Sharing *********************/
+
+.filter_box {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.filter_item {
+  margin: 0.5rem;
+}
+
+.filter_item select {
+  font-size: 1.8rem;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  border: 0.1rem solid red;
+  border-radius: 1.5rem;
+}
+
+.imag_info {
+  border-radius: 10px;
+}
+
+.item_of_facolities_icon {
+  background: #fff;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  height: 8rem;
+}
+
+.item_of_facolities_icon .icon_box {
+  display: flex;
+  align-items: center;
+}
+
+.item_of_facolities_icon .icon_box img {
+  margin-right: 1rem;
+}
+
+.item_of_facolities_icon .icon_box p {
+  text-transform: capitalize;
+}
+
+.adres_input h1 a {
+  text-transform: capitalize;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: #595959;
+}
+
+.adres_input h1 a:hover {
+  color: red;
+}
+
+.adres_input p {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  text-align: left;
+}
+
+.adres_input p span {
+  font-size: 2rem;
+}
+
+.rate_outPut {
+  background: #fff;
+  text-align: center;
+  box-shadow: -0.5rem -0.2rem 0.5rem rgb(0 0 0 / 20%);
+  border-radius: 0.8rem;
+  border: 0.1rem;
+  margin-left: 6rem;
+}
+
+.rate_outPut h4 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.rate_outPut .btn.btn_owner {
+  background: red;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+}
+
+.rate_outPut p {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.rate_outPut .btn {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  color: red;
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  border: 0.1rem solid red;
+}
+
+.rate_outPut .btn:hover {
+  background: red;
+  color: #fff;
+}
+
+.share_details .heading {
+  color: red;
+  text-align: left;
+  padding-bottom: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/********************Room Gallery********************/
+.room_gallery_info .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.room_gallery_info .swiper {
+  width: 100%;
+  height: 300px;
+}
+
+.room_gallery_info .swiper img {
+  object-fit: contain;
+}
+
+.room_gallery_info .swiper-pagination-bullet {
+  background: rgba(255, 0, 0, 0.63);
+}
+
+.room_gallery_info .swiper-button-prev::after,
+.room_gallery_info .swiper-button-next::after {
+  color: red;
+  font-size: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .home_page .swiper-button-next, .home_page .swiper-button-prev{
+    display: none;
+
+  }
+
+}
+
+.price_details {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.gall_top {
+  margin-top: 2rem;
+}
+
+.price_details span {
+  font-size: 1.8rem;
+}
+
+.head_caption h1 {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  position: relative;
+  margin-left: 1.5rem;
+}
+
+.head_caption h1::after {
+  content: "";
+  position: absolute;
+  width: 4rem;
+  height: 1rem;
+  top: 0.5rem;
+  background: red;
+  margin-left: 0.8rem;
+}
+
+.head_caption h1::before {
+  content: "";
+  position: absolute;
+  width: 1.5rem;
+  height: 1rem;
+  background: red;
+  margin-left: -2rem;
+  top: 0.5rem;
+}
+
+.head_caption .mx-5 {
+  margin-left: 3rem !important;
+  text-align: center;
+}
+
+.voverFlow {
+  overflow-x: auto;
+}
+
+.occu_ig {
+  width: 6rem;
+}
+
+.room_inner {
+  background: #fff;
+}
+
+.gall_top .rate_outPut {
+  margin-left: 0;
+  border-radius: 0;
+  margin-top: 0;
+  padding: 1.5rem;
+}
+
+.room_add {
+  display: flex;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.price_room {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.gall_price {
+  box-shadow: none;
+}
+
+.gall_price .bg-dark {
+  background: red !important;
+}
+
+.gall_price .other_part {
+  justify-content: space-between;
+}
+
+.icons_for_room {
+  margin: 1.5rem;
+}
+
+.icons_for_room.other {
+  text-align: center;
+}
+
+.icons_for_room a {
+  text-decoration: none;
+  color: red;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.icons_for_room a::after {
+  content: "+";
+  font-size: 1.8rem;
+}
+
+.pg_name h2 {
+  text-transform: capitalize;
+  padding-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  position: relative;
+  font-weight: 700;
+}
+
+.pg_name h2::after {
+  position: absolute;
+  content: "";
+  border-bottom: 0.3rem solid red;
+  width: 10rem;
+  top: 70%;
+  left: 0;
+  transition: 0.8s;
+}
+
+.about-us {
+  width: 100%;
+}
+
+.pg_name p {
+  font-size: 1.5rem;
+  padding-bottom: 1.5rem;
+  text-transform: capitalize;
+}
+
+.price_room {
+  margin-top: 1.5rem;
+}
+
+.price_room:nth-child(2) {
+  border-right: 0.2rem solid red;
+  padding: 1.5rem;
+  background: rgb(243, 243, 243);
+}
+
+.price_room:nth-child(3) {
+  /* border-right: .2rem solid red; */
+  padding: 1.5rem;
+  background: rgb(243, 243, 243);
+}
+
+/*********************owner call start*********************/
+.owner_call .heading {
+  margin-top: 5rem;
+  text-align: center;
+  font-size: 2.5rem;
+  text-transform: capitalize;
+}
+
+.owner_call .heading .fas {
+  color: green;
+  font-size: 2.5rem;
+  padding-right: 1rem;
+}
+
+.owner_call .sub_heading {
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  margin-top: 1rem;
+}
+
+.user_for {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.owner_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_for .owner_icon {
+  width: 12rem;
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+  background: #9747ff;
+}
+
+.user_for .owner_icon img {
+  position: absolute;
+  width: 121%;
+}
+
+.owner_text h5 {
+  text-align: center;
+  margin-left: 2rem;
+  font-size: 2.5rem;
+  text-transform: capitalize;
+}
+
+.owner_btn {
+  margin-top: 5rem;
+}
+
+.owner_btn .btn {
+  background: rgb(33, 138, 2);
+  padding: 0.8rem 12rem;
+  font-size: 2rem;
+  color: #fff;
+  border-radius: 50px;
+}
+
+/*********************owner call end*********************/
+
+/****************terms and conditons****************/
+
+.terms_conditions {
+  margin: 5rem;
+}
+
+.terms_conditions .heading {
+  color: #807f7f;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.terms_conditions .heading span {
+  color: red;
+}
+
+.terms_conditions .con_oara {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.terms_conditions .content h4 {
+  color: red;
+  font-weight: 600;
+  margin-block: 1rem;
+  font-size: 1.5rem;
+}
+
+.terms_conditions .content p {
+  color: #807f7f;
+  font-size: 1.5rem;
+  line-height: 2.2rem;
+  letter-spacing: 0.05rem;
+}
+
+.terms_conditions .content ul li {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-block: 0.5rem;
+  font-size: 1.3rem;
+  margin-left: 1.5rem;
+  position: relative;
+}
+
+.terms_conditions .content ul li::before {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  background: red;
+  border-radius: 50%;
+  top: 0.5rem;
+  left: 0;
+  margin-left: 0rem;
+}
+
+.terms_conditions .content ul h3 {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+/* Pivacy policy */
+.privacy_policy .content h4 {
+  background: red;
+  color: #fff;
+  padding: 1.2rem 0;
+  width: 50%;
+}
+
+.privacy_policy .content ul h5 {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.privacy_policy .con_oara {
+  font-size: 1.8rem;
+}
+
+.privacy_policy .content .bottm_para {
+  color: red;
+  font-size: 1.8rem;
+  margin-block: 1rem;
+}
+
+.privacy_policy .content ul li span {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+/* Modal Part */
+
+#owner_details_form_modal .modal-header {
+  background: rgb(139, 252, 156);
+  position: relative;
+}
+
+#owner_details_form_modal .modal_text_part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#owner_details_form_modal .modal-body h3 {
+  text-transform: capitalize;
+}
+
+.modal_text_part .part_img {
+  width: 10rem;
+}
+
+.modal_text_part .part_text h5 {
+  text-transform: capitalize;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.modal_text_part .part_text p {
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  color: #878787;
+}
+
+#owner_details_form_modal .modal-header .btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1.5rem;
+}
+
+.form_owner_body .form-label {
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.form_owner_body .form-control {
+  padding: 1.3rem;
+  font-size: 1.3rem;
+}
+
+.form_owner_body .form-control:focus {
+  box-shadow: none;
+  border: 0.1rem solid green;
+}
+
+.form_owner_body .check_label {
+  font-size: 1.1rem;
+}
+
+.form_owner_body .btn {
+  background: rgb(139, 252, 156);
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: black;
+  text-transform: capitalize;
+  border-radius: 50px;
+}
+
+.form_owner_body .form-switch .form-check-input {
+  border: 0.1rem solid green;
+  width: 3rem;
+  height: 1.5rem;
+}
+
+.form_owner_body .form-switch .form-check-input:focus {
+  box-shadow: none;
+  border: 0.1rem solid green;
+}
+
+.form_owner_body .form-switch .form-check-input:checked {
+  background-color: green;
+  border-color: none;
+}
+
+.form_owner_body .form-switch .form-check-label {
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.form_owner_body .d-flex .check_box {
+  width: 2rem;
+  height: 2rem;
+}
+
+.first_gall_info {
+  border: 0.1rem solid red;
+}
+
+@media (max-width: 1400px) {
+  .html {
+    font-size: 80%;
+  }
+
+  .navbar {
+    padding: 0 2%;
+  }
+
+  .prperty_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.2rem;
+  }
+
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .contact-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    text-align: center;
+  }
+
+  header::after {
+    width: 96%;
+  }
+
+  .search_part_content .placa_box {
+    width: 25%;
+  }
+
+  .tabsDivs .nav-tabs .nav-link,
+  .nav-tabs .nav-link.active {
+    font-size: 1.5rem;
+  }
+
+  .tab-content .collapse {
+    top: 57%;
+  }
+
+  header .property_part ul li {
+    text-align: center;
+  }
+
+  header .property_part ul li span {
+    margin-left: 0.2rem;
+
+    padding: 0 0.2rem;
+    border-radius: 0.2rem;
+  }
+
+  header .property_part ul li i {
+    padding: 0.5rem;
+  }
+
+  .pg_for_looking .col-3 {
+    width: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .pg_for_looking .lodge_bog .txt_part {
+    height: 4rem;
+  }
+
+  .openbtn {
+    padding: 0;
+    font-size: 1.5rem;
+  }
+
+  .why_choose .first_box,
+  .why_choose .secnd_box,
+  .why_choose .third_box,
+  .why_choose .fourth_box {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .why_choose .first_box {
+    top: 8%;
+  }
+
+  .why_choose .secnd_box {
+    top: 25%;
+  }
+
+  .why_choose .fourth_box {
+    bottom: 5%;
+  }
+
+  .why_choose .third_box {
+    bottom: 32%;
+  }
+
+  .urs_faqPart .faqPart .faqPartBox .faqPartBoxContent {
+    width: 100%;
+    padding: 2% 8%;
+  }
+
+  .why_choose .first_box h4,
+  .why_choose .secnd_box h4,
+  .why_choose .third_box h4,
+  .why_choose .fourth_box h4 {
+    font-weight: normal !important;
+    font-size: 1rem;
+  }
+
+  .copy_right .lead {
+    font-size: 1.4rem;
+  }
+
+  .pr_details .presonal {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .pr_details .presonal .btn-grup {
+    padding: 2rem;
+  }
+
+  .location_details .shadow {
+    width: 100%;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .user_profile table tbody td {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  .user_profile .caption-top thead {
+    font-size: 1.3rem;
+  }
+
+  .user_profile .btn-danger {
+    padding: 1rem 0.5rem;
+  }
+
+  .suscp_box .suscp_form {
+    width: 100%;
+    height: 100%;
+  }
+
+  .rate_outPut {
+    margin-left: 0 !important;
+  }
+
+  .room_inner .price_details {
+    padding: 0;
+  }
+
+  .room_icon {
+    overflow-x: auto;
+  }
+
+  .room_icon .icons_for_room {
+    width: 20.333333%;
+  }
+
+  .room_info_fstCol .verified_room {
+    top: 6%;
+    left: -9%;
+    width: 35%;
+  }
+
+  .room_info_fstCol .verified_room h4 {
+    font-size: 1.5rem;
+  }
+
+  .rate_outPut .btn {
+    margin-bottom: 1.5rem;
+  }
+
+  .item_of_facolities_icon .icon_box p {
+    font-size: 1.1rem;
+  }
+
+  .adres_input h1 {
+    margin-top: 1.5rem;
+  }
+
+  .adres_input h3 {
+    margin-top: 1.5rem;
+  }
+
+  .adres_input .form-group {
+    margin-top: 1.5rem;
+  }
+}
+
+/* media queri */
+@media (max-width: 926px) {
+  .html {
+    font-size: 80%;
+  }
+
+  .navbar {
+    padding: 0 2%;
+  }
+
+  .prperty_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.2rem;
+  }
+
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .contact-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    text-align: center;
+  }
+
+  header .property_part ul li {
+    font-size: 1.2rem;
+  }
+
+  header::after {
+    width: 96%;
+  }
+
+  .search_part_content .placa_box {
+    width: 25%;
+  }
+
+  .tabsDivs .nav-tabs .nav-link,
+  .nav-tabs .nav-link.active {
+    font-size: 1.5rem;
+  }
+
+  .tab-content .collapse {
+    top: 57%;
+  }
+
+  header .property_part ul li {
+    margin-left: 0;
+    width: 20rem;
+    text-align: center;
+    margin-left: -2rem;
+  }
+
+  header .property_part ul li span {
+    margin-left: 0.2rem;
+
+    padding: 0 0.2rem;
+    border-radius: 0.2rem;
+  }
+
+  header .property_part ul li i {
+    padding: 0.5rem;
+  }
+
+  .pg_for_looking .col-3 {
+    width: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .pg_for_looking .lodge_bog .txt_part {
+    height: 4rem;
+  }
+
+  .openbtn {
+    padding: 0;
+    font-size: 1.5rem;
+  }
+
+  .why_choose .first_box,
+  .why_choose .secnd_box,
+  .why_choose .third_box,
+  .why_choose .fourth_box {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .why_choose .first_box {
+    top: 8%;
+  }
+
+  .why_choose .secnd_box {
+    top: 25%;
+  }
+
+  .why_choose .fourth_box {
+    bottom: 5%;
+  }
+
+  .why_choose .third_box {
+    bottom: 32%;
+  }
+
+  .urs_faqPart .faqPart .faqPartBox .faqPartBoxContent {
+    width: 100%;
+    padding: 2% 8%;
+  }
+
+  .why_choose .first_box h4,
+  .why_choose .secnd_box h4,
+  .why_choose .third_box h4,
+  .why_choose .fourth_box h4 {
+    font-weight: normal !important;
+    font-size: 1rem;
+  }
+
+  .copy_right .lead {
+    font-size: 1.4rem;
+  }
+
+  .pr_details .presonal {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .pr_details .presonal .btn-grup {
+    padding: 2rem;
+  }
+
+  .location_details .shadow {
+    width: 100%;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .user_profile table tbody td {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  .user_profile .caption-top thead {
+    font-size: 1.3rem;
+  }
+
+  .user_profile .btn-danger {
+    padding: 1rem 0.5rem;
+  }
+
+  .suscp_box .suscp_form {
+    width: 100%;
+    height: 100%;
+  }
+
+  .rate_outPut {
+    margin-left: 0 !important;
+  }
+
+  .room_inner .price_details {
+    padding: 0;
+  }
+
+  .room_icon {
+    overflow-x: hidden;
+  }
+
+  .room_icon .icons_for_room {
+    width: 20.333333%;
+  }
+
+  .room_info_fstCol .verified_room {
+    top: 6%;
+    left: -9%;
+    width: 35%;
+  }
+
+  .room_info_fstCol .verified_room h4 {
+    font-size: 1.5rem;
+  }
+
+  .rate_outPut .btn {
+    margin-bottom: 1.5rem;
+  }
+
+  .item_of_facolities_icon .icon_box p {
+    font-size: 1.1rem;
+  }
+
+  .adres_input h1 {
+    margin-top: 1.5rem;
+  }
+
+  .adres_input h3 {
+    margin-top: 1.5rem;
+  }
+
+  .adres_input .form-group {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 756px) {
+  .html {
+    font-size: 80%;
+  }
+
+  .navbar {
+    padding: 0 2%;
+  }
+
+  .prperty_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.2rem;
+  }
+
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .contact-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    text-align: center;
+  }
+
+  header .property_part ul li {
+    font-size: 0.8rem;
+  }
+
+  header::after {
+    width: 96%;
+  }
+
+  .search_part_content .placa_box {
+    width: 25%;
+  }
+
+  .tabsDivs .nav-tabs .nav-link,
+  .nav-tabs .nav-link.active {
+    font-size: 1.5rem;
+  }
+
+  .tab-content .collapse {
+    top: 57%;
+  }
+
+  header .property_part ul li {
+    margin-left: 0;
+    width: 15rem;
+    padding: 0.3rem 0;
+    text-align: center;
+    margin-left: -2rem;
+  }
+
+  header .property_part ul li span {
+    margin-left: 0.2rem;
+
+    padding: 0 0.2rem;
+    border-radius: 0.2rem;
+  }
+
+  header .property_part ul li i {
+    padding: 0.5rem;
+  }
+
+  .pg_for_looking .col-3 {
+    width: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .pg_for_looking .lodge_bog .txt_part {
+    height: 4rem;
+  }
+
+  .openbtn {
+    padding: 0;
+    font-size: 1.5rem;
+  }
+
+  .why_choose .first_box,
+  .why_choose .secnd_box,
+  .why_choose .third_box,
+  .why_choose .fourth_box {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .why_choose .first_box {
+    top: 8%;
+  }
+
+  .why_choose .secnd_box {
+    top: 25%;
+  }
+
+  .why_choose .fourth_box {
+    bottom: 5%;
+  }
+
+  .why_choose .third_box {
+    bottom: 32%;
+  }
+
+  .urs_faqPart .faqPart .faqPartBox .faqPartBoxContent {
+    width: 100%;
+    padding: 2% 8%;
+  }
+
+  .why_choose .first_box h4,
+  .why_choose .secnd_box h4,
+  .why_choose .third_box h4,
+  .why_choose .fourth_box h4 {
+    font-weight: normal !important;
+    font-size: 1rem;
+  }
+
+  .copy_right .lead {
+    font-size: 1.4rem;
+  }
+
+  .pr_details .presonal {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .pr_details .presonal .btn-grup {
+    padding: 2rem;
+  }
+
+  .location_details .shadow {
+    width: 100%;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .user_profile table tbody td {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  .user_profile .caption-top thead {
+    font-size: 1.3rem;
+  }
+
+  .user_profile .btn-danger {
+    padding: 1rem 0.5rem;
+  }
+
+  .suscp_box .suscp_form {
+    width: 100%;
+    height: 100%;
+  }
+
+  .rate_outPut {
+    margin-left: 0 !important;
+  }
+
+  .room_inner .price_details {
+    padding: 0;
+  }
+
+  .room_icon {
+    overflow-x: auto;
+  }
+
+  .room_icon .icons_for_room {
+    width: 20.333333%;
+  }
+
+  .room_info_fstCol .verified_room {
+    top: 6%;
+    left: -9%;
+    width: 30%;
+  }
+
+  .room_info_fstCol .verified_room h4 {
+    font-size: 1.5rem;
+  }
+
+  .rate_outPut .btn {
+    margin-bottom: 1.5rem;
+  }
+
+  .item_of_facolities_icon .icon_box p {
+    font-size: 1.1rem;
+  }
+
+  .adres_input h1 {
+    margin-top: 1.5rem;
+  }
+
+  .adres_input h3 {
+    margin-top: 1.5rem;
+  }
+
+  .adres_input .form-group {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .rate_outPut {
+    margin-left: 0;
+    margin-top: 1.5rem;
+  }
+
+  .suscp_box .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .suscp_box .form-group input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  header .property_part ul li {
+    font-size: 0.8rem;
+  }
+
+  .logo_part .img-fluid {
+    width: 60%;
+    height: auto;
+  }
+
+  header::after {
+    width: 96%;
+  }
+
+  .search_part_content .placa_box {
+    width: 25%;
+  }
+
+  .tabsDivs .nav-tabs .nav-link,
+  .nav-tabs .nav-link.active {
+    font-size: 1.5rem;
+  }
+
+  .tab-content .collapse {
+    top: 57%;
+  }
+
+  header .property_part ul li {
+    margin-left: 0;
+    width: 15rem;
+    padding: 0.3rem 0;
+    text-align: center;
+    margin-left: -2rem;
+  }
+
+  header .property_part ul li span {
+    margin-left: 0.2rem;
+
+    padding: 0 0.2rem;
+    border-radius: 0.2rem;
+  }
+
+  header .property_part ul li i {
+    padding: 0.5rem;
+  }
+
+  .info_property .col-12 {
+    width: 100%;
+    padding: 0 8%;
+  }
+
+  .pg_for_looking .col-3 {
+    width: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .pg_for_looking .lodge_bog .txt_part {
+    height: 4rem;
+  }
+
+  .openbtn {
+    padding: 0;
+    font-size: 1.5rem;
+  }
+
+  .why_choose .first_box,
+  .why_choose .secnd_box,
+  .why_choose .third_box,
+  .why_choose .fourth_box {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .why_choose .first_box {
+    top: 8%;
+  }
+
+  .why_choose .secnd_box {
+    top: 25%;
+  }
+
+  .why_choose .fourth_box {
+    bottom: 5%;
+  }
+
+  .why_choose .third_box {
+    bottom: 32%;
+  }
+
+  .why_choose .first_box h4,
+  .why_choose .secnd_box h4,
+  .why_choose .third_box h4,
+  .why_choose .fourth_box h4 {
+    font-weight: normal !important;
+    font-size: 1rem;
+  }
+
+  .copy_right .lead {
+    font-size: 1.4rem;
+  }
+
+  .pr_details .presonal {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .pr_details .presonal .btn-grup {
+    padding: 2rem;
+  }
+
+  .location_details .shadow {
+    width: 100%;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .user_profile table tbody td {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  .user_profile .caption-top thead {
+    font-size: 1.3rem;
+  }
+
+  .user_profile .btn-danger {
+    padding: 1rem 0.5rem;
+  }
+
+  .rate_outPut {
+    margin-left: 0 !important;
+  }
+
+  .room_inner .price_details {
+    padding: 0;
+  }
+
+  .room_icon {
+    overflow-x: auto;
+  }
+
+  .room_icon .icons_for_room {
+    width: 20.333333%;
+  }
+
+  .room_info_fstCol .verified_room {
+    top: 6%;
+    left: -9%;
+    width: 35%;
+  }
+
+  .rate_outPut .btn {
+    margin-bottom: 1.5rem;
+  }
+
+  .item_of_facolities_icon .icon_box p {
+    font-size: 1.1rem;
+  }
+
+  .adres_input h1 {
+    margin-top: 1.5rem;
+  }
+
+  .adres_input h3 {
+    margin-top: 1.5rem;
+  }
+
+  .adres_input .form-group {
+    width: 100%;
+  }
+}
+
+.objects-cover {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+#our-team {
+  display: block;
+}
+
+#our-team .team-member .team-img {
+  width: 100px;
+  height: 100px;
+}
+
+.contact-detail {
+display: flex;
+justify-content: space-between;
+align-items: center; 
+margin-bottom: 40px;
+border: 2px solid red;
+border-radius: 5px;
+font-size: 16px !important;
+}
+
+.first_room_info .form-group {
+text-align: left;
+text-transform: capitalize;
+font-size: 1.2rem;
+margin-bottom: 1rem;
+}
+
+
+/* Contact Page - form section */
+.form-group label {
+font-size: 1.8rem;
+font-weight: 500;
+margin-bottom: 5px;
+text-transform: capitalize;
+}
+.form-group input {
+border: .1rem solid #ccc;
+padding: 1rem;
+font-size: 1.5rem;
+border-radius: .5rem;
+margin-bottom: 15px;
+}
+
+.bg-red {
+background-color: #f00;
+}
+
+.border-red {
+border: 1px solid #f00;
+}
+
+.btn-red {
+background-color: #f00;
+}
+
+.text-red {
+color: #f00;
+}
+
+.contact-textarea {
+  font-size: 1.5rem;
+}
+
+.rounded-3 {
+  border-radius: 1.2rem!important;
+}
+
+.text-weight-500 {
+  font-weight: 500;
+}
+
+.h-40 {
+  height: 40%!important;
+}
+
+.w-40 {
+  width: 40%!important;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+
+#testimonials {
+  scroll-behavior: smooth;
+}
+
+#testimonials::-webkit-scrollbar {
+  display: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  color: red!important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: red!important;
+}
+
+
