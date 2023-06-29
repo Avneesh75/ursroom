@@ -19,7 +19,9 @@ class SubscriptionAdmin(admin.ModelAdmin):
 class UserAdmin(BaseUserAdmin):
     list_display = ['id', "email", "name", "phone_number", "is_staff", "is_subscribed"]
     list_display_links = ['id', "email"]
-    # list_filter=('email','created_at')
+    
+    list_filter=('date_joined',)
+    ordering=['-date_joined']
     
 
     fieldsets = (

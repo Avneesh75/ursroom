@@ -66,36 +66,6 @@ def ownerquery(request, uuid):
 def ownerremainings(request):
     return render(request, 'owner_remaining.html')
 
-# def UserLogin(request):
-#     return render(request,'user_login.html')
-
-# def ValidateCustomer(new):
-#         error_message=None;
-#         if(not new.first_name):
-#             error_message ="First Name is Required"
-#         elif len(new.first_name)<4:
-#             error_message="First Name Must be 4 Character long or more" 
-#         elif not new.last_name:
-#              error_message="Last Name is Required"
-#         elif len(new.last_name)<4:
-#             error_message="Last Name Must be 4 Character long or more"
-#         elif not new.phone:
-#             error_message="Phone Number is Required"
-#         elif len(new.phone)<10:
-#             error_message="Please Enter Correct Number"
-#         elif not new.email:
-#             error_message="email is required"
-#         elif not new.password:
-#             error_message="Password is Required"
-#         elif not new.cpassword:
-#             error_message="Confirm Password is Required"
-#         elif new.isExist():
-#             error_message="User Already Exist.."
-#         elif new.password!=new.cpassword:
-#             error_message = "Password and Confirm Password does not Match"
-
-#         return error_message
-
 def Register(request):
     if request.method=='POST':
         if request.POST.get('fname')=="":

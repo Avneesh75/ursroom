@@ -1330,7 +1330,7 @@ iframe {
   box-shadow: -0.5rem -0.2rem 0.5rem rgb(0 0 0 / 20%);
   border-radius: 0.8rem;
   border: 0.1rem;
-  margin-left: 6rem;
+  /* margin-left: 6rem; */
 }
 
 .rate_outPut h4 {
