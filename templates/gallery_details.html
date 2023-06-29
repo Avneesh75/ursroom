@@ -76,8 +76,9 @@
 
     .active{
         
-        background: grey;
-        color: red;
+        {% comment %} background: ; {% endcomment %}
+        color: red !important;
+        font-weight:700;
     }
     
    </style>
@@ -251,11 +252,11 @@
         <div class="container col-12 mt-5" style="border:solid grey; padding: 10px;">
             <div class="row fs-3 font-italic">
                 <div class="d-flex justify-content-between gap-4">
-                  <div class="active">  
-                    <a  style="text-decoration: none; color: black;" href="#exampleModal">Overview</a>
-                    <a  style="text-decoration: none; color: black;" href="#rooms">Rooms</a>
-                    <a  style="text-decoration: none; color: black;" href="#facility">Facility</a>
-                    <a  style="text-decoration: none; color: black;" href="#location">Location</a>
+                  <div >  
+                    <a class="men_u"  style="text-decoration: none; color: black;" href="#exampleModal" onclick=myFunction()>Overview</a>
+                    <a class="men_u"  style="text-decoration: none; color: black;" href="#rooms" onclick=myFunction()>Rooms</a>
+                    <a class="men_u"  style="text-decoration: none; color: black;" href="#facility" onclick=myFunction()>Facility</a>
+                    <a class="men_u"  style="text-decoration: none; color: black;" href="#location" onclick=myFunction()>Location</a>
                  </div>
             <div class="">
                 <span class="text-center text-capitalize" style="font-size: 10px; padding-top: 10PX;">from</span>
@@ -857,22 +858,30 @@
                                         <p class="text-center text-capitalize"><b>Room Cleaning</b></p>
                                     </div>
                                 {% endif %}
+                                {% comment %} {% if  'parking' in prop.parking  %}
+                                    <div class="col-1 icons_for_room">
+                                        <img src="/static/images/park.png" style="height:60px; width:70px;margin:10px;" alt="" class="img-fluid">
+                                        <p class="text-center text-capitalize"><b>Bike Parking</b></p>
+                                    </div>
+                                {% endif %} {% endcomment %}
+
                                 {% if  'parking' in prop.parking  %}
                                     <div class="col-1 icons_for_room">
-                                        {% if 'Bike' in parking %}
+                                        print(parking)
+                                        {% if prop.parking == "Bike" %}
                                         <img src="/static/images/bike.png" style="height:60px; width:70px;margin:10px;" alt="" class="img-fluid">
                                         <p class="text-center text-capitalize"><b>Bike Parking</b></p>
                                         {% endif %}
-                                        {% if 'Four Wheeler' in parking %}
+                                        {% if prop.parking == "Four Wheeler" %}
                                         <img src="/static/images/car.png" style="height:60px; width:70px;margin:10px;" alt="" class="img-fluid">
                                         <p class="text-center text-capitalize"><b>Car Parking</b></p>
                                         {% endif %}
-                                        {% if 'Bike/Four Wheeler' in parking %}
+                                        {% if prop.parking == "Bike/Four Wheeler" %}
                                         <img src="/static/images/park.png" style="height:60px; width:70px;margin:10px;" alt="" class="img-fluid">
                                         <p class="text-center text-capitalize"><b>Bike & Car Parking</b></p>
                                         {% endif %}
                                     </div>
-                                {% endif %}
+                                {% endif %} 
                             </div>
                         </div>
                     </div>
@@ -1111,10 +1120,11 @@
 
        
         <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-        <script type='text/style'>
-            $(document).on('click','div a',function(){
-                $(this).addClass('active').siblings().removeClass('active')
-            })
+        <script>
+            function myFunction() {
+                var element = document.querySelector('.men_u');
+               element.classList.toggle("active");
+              }
         </script>
     </script>
 
