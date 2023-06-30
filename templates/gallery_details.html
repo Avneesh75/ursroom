@@ -82,6 +82,14 @@
     }
     
    </style>
+
+   <script>
+    function myFunction(this) {
+                var element = document.querySelector('.men_u');
+                element.classList.remove("active");
+                this.classList.toggle("active");
+            }
+    </script>
 {% endblock css %}
 
 {% block body %}
@@ -252,11 +260,11 @@
         <div class="container col-12 mt-5" style="border:solid grey; padding: 10px;">
             <div class="row fs-3 font-italic">
                 <div class="d-flex justify-content-between gap-4">
-                  <div >  
-                    <a class="men_u"  style="text-decoration: none; color: black;" href="#exampleModal" onclick=myFunction()>Overview</a>
-                    <a class="men_u"  style="text-decoration: none; color: black;" href="#rooms" onclick=myFunction()>Rooms</a>
-                    <a class="men_u"  style="text-decoration: none; color: black;" href="#facility" onclick=myFunction()>Facility</a>
-                    <a class="men_u"  style="text-decoration: none; color: black;" href="#location" onclick=myFunction()>Location</a>
+                  <div>  
+                    <a class="men_u"  style="text-decoration: none; color: black;" href="#exampleModal" onclick="myFunction(this)">Overview</a>
+                    <a class="men_u"  style="text-decoration: none; color: black;" href="#rooms" onclick="myFunction(this)">Rooms</a>
+                    <a class="men_u"  style="text-decoration: none; color: black;" href="#facility" onclick="myFunction(this)">Facility</a>
+                    <a class="men_u"  style="text-decoration: none; color: black;" href="#location" onclick="myFunction(this)">Location</a>
                  </div>
             <div class="">
                 <span class="text-center text-capitalize" style="font-size: 10px; padding-top: 10PX;">from</span>
@@ -865,9 +873,9 @@
                                     </div>
                                 {% endif %} {% endcomment %}
 
-                                {% if  'parking' in prop.parking  %}
+                                {% if prop.parking  %}
                                     <div class="col-1 icons_for_room">
-                                        print(parking)
+                                        
                                         {% if prop.parking == "Bike" %}
                                         <img src="/static/images/bike.png" style="height:60px; width:70px;margin:10px;" alt="" class="img-fluid">
                                         <p class="text-center text-capitalize"><b>Bike Parking</b></p>
@@ -1118,13 +1126,6 @@
             window.open(`https://www.google.com/maps/search/?api=1&query=${lat}+${long}`, '_blank');
         }
 
-       
-       
-        
-            function myFunction() {
-                var element = document.querySelector('.men_u');
-               element.classList.toggle("active");
-              }
         
     </script>
 
