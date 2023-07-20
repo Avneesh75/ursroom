@@ -281,9 +281,10 @@
                     <div class="col-lg-9 shadow">
                         <div class="row pg_dtls">
                             <div class="pg_name">
-                                <h2>{{ prop.pg_name }}</h2>
+                                <h2>{{ prop.pg_name }}</h2> <p> <span class="pe-3"><i class="fas fa-map-marker-alt"></i></span>{{ prop.landmark }}, {{ prop.locality }}, {{ prop.city }}, india</p>
                                 <hr>
-                                <p> <span class="pe-3"><i class="fas fa-map-marker-alt"></i></span>{{ prop.landmark }}, {{ prop.locality }}, {{ prop.city }}, india</p>
+                                {% comment %} <p> <span class="pe-3"><i class="fas fa-map-marker-alt"></i></span>{{ prop.landmark }}, {{ prop.locality }}, {{ prop.city }}, india</p> {% endcomment %}
+                                <p>{{ prop.property_description }}</p>
                             </div>
                            
                         </div>
@@ -306,20 +307,20 @@
             </div>
             
 
-            <div class="container">
+           <div class="container">
                 <div class="row g-5 gall_top">
                     <div class="col-lg-9 shadow">
                         <div class="row pg_dtls">
-                            <div class="pg_name">
+                            {% comment %} <div class="pg_name">
                                 <h2>pg description</h2>
                                 <hr>
                                 <p>{{ prop.property_description }}</p>
-                            </div>
+                            </div> {% endcomment %}
                             
                         </div>
-                    </div>
+                    </div> 
                     {% comment %} overview {% endcomment %}
-                    <div class="col-lg-3">
+                    {% comment %} <div class="col-lg-3">
                         <div class="rate_outPut gall_price shadow">
                             <h4>URS Rating:-</h4>
                             <p>Cleanliness</p>
@@ -336,7 +337,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> {% endcomment %}
 
 
 

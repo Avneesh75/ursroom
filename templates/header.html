@@ -1,6 +1,6 @@
 <header>
     <div class="logo_part">
-        <a href="/"><img src="/static/images/IMG-20220613-WA0014 1.png" alt="" class="img-fluid"></a>
+        <a href="/"><img src="/static/images/log.png" alt="" class="img-fluid" style="height: 50px;width: 130px;"></a>
     </div>
     <div class="property_part">
         {% if post_property == "true" %}
@@ -19,7 +19,8 @@
                     <i class="fas fa-user"></i>
                     <h2>Welcome {{ request.user.name }}</h2>
                 {% else %}
-                    <a href="/"><img src="/static/images/IMG-20220613-WA0014 1.png" alt="" class="img-fluid"></a>
+                    
+                    <a href="/"><img src="/static/images/log.png" alt="" class="img-fluid" style="height: 80px;width: 150px;"></a>
                 {% endif %}
             </div>
             <div class="menuLink" style="margin-top: -60px;">

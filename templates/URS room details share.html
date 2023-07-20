@@ -89,7 +89,7 @@
                     <p class="text-light fs-4 mb-0">
                       {% if prop.min_amount.room_type == "Single" %} Single Sharing {% elif prop.min_amount.room_type == "Double" %} Double Sharing {% elif prop.min_amount.room_type == "Triple" %} Triple Sharing {% elif prop.min_amount.room_type == "Four" %} Four Sharing {% endif %}
                     </p>
-                    <h2 class="text-white fw-bold rounded-pill bg-danger p-1 px-3">₹{{ prop.min_amount.amount }}</h2>
+                    <h2 class="text-white fw-bold rounded-pill bg-primary p-1 px-3">₹{{ prop.min_amount.amount }}</h2>
                   </div>
                 </div>
               </div>
@@ -179,7 +179,7 @@
               </div>
               <a
                 href="#owner_details_form_modal"
-                class="btn btn_owner btn-danger py-2 fs-2 text-capitalize"
+                class="btn btn_owner btn-primary py-2 fs-2 text-capitalize"
                 onclick="getPropertyUserId('{{ prop.user.id }}', '{{ prop.uuid }}')"
                 data-bs-toggle="modal"
               >

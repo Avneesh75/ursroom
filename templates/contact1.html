@@ -3,6 +3,24 @@
 {% block body %}
 
 {% include "header.html" with post_property="true" %}
+<div
+  class="position-absolute top-0"
+  style="
+    height: 450px;
+    width: 100%;
+    z-index: -1;
+    background: linear-gradient(
+     {% comment %} 180deg,
+      rgba(255, 156, 156, 0.5) 0%,
+      rgba(255, 219, 219, 0) 100%  {% endcomment %}
+      to bottom,
+      rgba(0,204, 255, 0.2) 0%,
+      rgba(255,255,255, 1) 100%
+      
+    );
+  "
+>
+</div>
 <section class="container mt-5">
 
 
@@ -12,10 +30,10 @@
           font-size: 6rem;
           padding: 2% 5%;
           text-underline-offset: 1rem;">
-        <span style="text-decoration: underline red;">
+        <span style="text-decoration: underline #4d94ff;">
           Contact
         </span>
-        <span style="color: red; text-decoration: underline black;">Us</span> </div>
+        <span style="color: #4d94ff; text-decoration: underline black;">Us</span> </div>
   <!--Contact heading-->
   <div class="row">
     <!--Grid column-->
@@ -58,7 +76,7 @@
               </div>
             </div>
             <div class="mt-3">
-              <input type="submit" name="submit" value="Submit" class="btn btn-danger btn-red btn-lg py-3 px-5">
+              <input type="submit" name="submit" value="Submit" class="btn btn-primary btn-red btn-lg py-3 px-5">
             </div>
           </form>
 
@@ -95,7 +113,7 @@
         </div>
         <div class="col-md-4">
           <a class="bg-red px-3 py-2 rounded text-white mb-2 d-inline-block fs-2"><i class="fa fa-envelope"></i></a>
-          <p class="fs-5">myursroom@gmail.com</p>
+          <p class="fs-5">director@ahemdabadsubha.com</p>
         </div>
       </div>
     </div>
