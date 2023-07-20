@@ -1,0 +1,28 @@
+{
+    "version": 3,
+    "builds":[
+        {
+            "src":"ursrooms/wsgi.py",
+            "use":"@vercel/python",
+            "config":{"maxLambdaSize": "15mb","runtime": "python 3.10.2" }
+
+        },
+        {
+            "src":"build_files.sh",
+            "use":"@vercel/static-build",
+            "config":{
+                "distDir":"staticfiles_build"
+            }
+        }
+    ],
+    "routers":[
+        {
+            "src":"/static/(.*)",
+            "dest":"/static/$1"
+        },
+        {
+            "src":"/(.*)",
+            "dest":"ursrooms/wsgi.py"
+        }
+    ]
+}
