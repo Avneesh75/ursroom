@@ -24,9 +24,9 @@ urlpatterns = [
     path('', include('payments.urls')),
 ]
 
-admin.site.site_header = "URS Rooms Admin"
-admin.site.site_title = "URS Rooms Admin Portal"
-admin.site.index_title = "Welcome to URS Rooms Admin Portal"
+admin.site.site_header = "Trendings Rental Admin"
+admin.site.site_title = "Trendings Rental Admin Portal"
+admin.site.index_title = "Welcome to Trendings Rental Admin Portal"
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
